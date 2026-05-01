@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Path</title>
-    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
@@ -14,16 +13,24 @@
 
 <body>
     <div class="conteudo" id="conteudo">
-        <header class="cabecalho">
-            <div class="cabecalhoEsquerdo textoOuro">
-                <div class="marca">BM</div>
-                <h1 class="tituloPagina">:: My Learning Path ::</h1>
-            </div>
-            <div class="cabecalhoDireito">
-                <div class="engrenagem"></div>
-                <div class="usuario"></div>
-            </div>
-        </header>
+<header class="cabecalho">
+  <div class="cabecalhoEsquerdo textoOuro">
+    
+    <h1 class="logo">
+      <!--<a href="/">-->
+        <span class="marca">BM</span>
+        &nbsp;
+        <span class="tituloSite">My Learning Path</span>
+      <!--</a>-->
+    </h1>
+
+  </div>
+
+  <div class="cabecalhoDireito">
+    <div class="engrenagem" aria-label="Configurações"></div>
+    <div class="usuario" aria-label="Perfil do usuário"></div>
+  </div>
+</header>
         <main class="principal" id="principal">
           <section class="estudo" id="estudo">
             <div class="tituloEstudo">
@@ -43,23 +50,22 @@
 
                     <button class="botao">
                         <div class="b-floppy" id="b-floppy"></div>
-                        <span>Salvar dados</span>
+                        <span class="textoOuro">Salvar</span>
                     </button>
 
                     <button class="botao">
                         <div class="b-upload" id="b-upload"></div></i>
-                        <span>Exportar dados</span>
+                        <span class="textoOuro">Exportar</span>
                     </button>
 
                     <button class="botao">
                         <div class="b-download" id="b-download"></div>
-                        <span>Carregar dados</span>
-                    </button>
-                    <button class="botao">
-                        <span>©&nbsp;&nbsp;Bruno Moraes 2026</span>
+                        <span class="textoOuro">Carregar</span>
                     </button>
                 </div>
-                
+                <div class="copy">
+                        <span class="textoOuro">©&nbsp;&nbsp;Bruno Moraes 2026</span>
+                </div>  
         </footer>
     </div>
 </body>

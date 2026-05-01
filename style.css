@@ -1,48 +1,204 @@
-  /* -----  ----- */
-:root {
-  --ouro90: linear-gradient(90deg,
-  #fff4b8,#e6c96a,#c9a227
-  );
-  --ouro135: linear-gradient(135deg,#fff4b8,#e6c96a,#c9a227
-  );
-  --ouro-linha: linear-gradient(90deg,
-  transparent
-  ,#c9a227,#e6c96a,#c9a227, 
-  transparent
-  );
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ----- ---------------------- ----- */
-body {
-  background-color: #1f1f1f;
+img, picture, video, canvas {
+  display: block;
+  max-width: 100%;
 }
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+/* VARIÁVEIS */
+:root {
+  /* FUNDOS */
+  --bg-principal: #1f1f1f;
+  --bg-secundario: #2a2a2a;
+
+  /* OUROS */
+  --ouro-soft: linear-gradient(
+    135deg,
+    #f5e6a5,
+    #d4af37,
+    #b8962e
+  );
+
+  --ouro-premium: linear-gradient(
+    90deg,
+    #8c6b1f,
+    #d4af37,
+    #fff4b8,
+    #d4af37,
+    #8c6b1f
+  );
+
+  --ouro-real: linear-gradient(
+    90deg,
+    #5a4300,
+    #c9a227,
+    #fff4b8,
+    #ffd700,
+    #fff4b8,
+    #c9a227,
+    #5a4300
+  );
+
+  --ouro-linha: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37,
+    #fff4b8,
+    #d4af37,
+    transparent
+  );
+
+  --texto: #eaeaea;
+}
+
+/* BASE */
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: #000;
+}
+
+/* LAYOUT */
 .conteudo {
+  background-color: var(--bg-principal);
   width: 100%;
   height: 100%;
-  color: gold;
+  color: var(--texto);
+
+  display: flex;
+  flex-direction: column;
 }
+
+/* CABEÇALHO */
 .cabecalho {
   width: 100%;
-}
-.principal {
-  width: 100%;
-  height: 100%;
-  padding: 5%;
- border: 1px solod gold; 
-}
-.rodape {
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 15px;
+  border: 1px solid white;
 }
 
-/* ----- cor dos icones ----- */
-.engrenagem, .usuario {
-  width: 25px;
-  height: 25px;
-  background: var(--ouro135);
+.cabecalho > * {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  border: 1px solid white;
+}
+
+.cabecalho > :nth-child(1) {
+  justify-content: flex-start;
+}
+
+.cabecalho > :nth-child(2) {
+  justify-content: flex-end;
+  flex: 1;
+  gap: 15px;
+}
+
+.marca {
+  display: inline-block;
+  text-decoration: underline overline;
+  text-underline-offset: 4px;
+}
+.marca {
+  all: unset;
+  display: inline-block;
+  text-decoration: underline overline;
+  text-decoration-color: #c9a227;
+  text-decoration-color: #c9a227;
+  margin-top: -4px;
+}
+
+.tituloSite {
+ font-size: 1.3rem; 
+}
+
+/* CONTEÚDO */
+.principal {
+  flex: 1;
+  padding: 5%;
+  border: 1px solid red;
+}
+
+/* RODAPÉ */
+.rodape {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.grupo-botoes {
+  display: flex;
+  justify-content: space-eveling;
+  gap: 10px;
+  /*flex-wrap: wrap;*/
+}
+
+/* BOTÕES */
+.botao {
+  width: 120px;
+  background-color: transparent;
+
+  border: 1px solid transparent;
+  border-image: var(--ouro-soft);
+  border-image-slice: 1;
+
+  padding: 10px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botao:hover {
+  background: rgba(255, 215, 0, 0.05);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.botao:active {
+  transform: scale(0.97);
+}
+
+/* TEXTO OURO */
+.textoOuro {
+  background: var(--ouro-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ÍCONES (SVG MASK) */
+.engrenagem,
+.usuario,
+.b-floppy,
+.b-download,
+.b-upload {
+
+  background: var(--ouro-soft);
+
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
+
   -webkit-mask-position: center;
   mask-position: center;
+
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -51,21 +207,48 @@ body {
   -webkit-mask-image: url("./images/gear.svg");
   mask-image: url("./images/gear.svg");
 }
+.engrenagem,
+.usuario {
+  width: 25px;
+  height: 25px;
+}
+
+.b-floppy,
+.b-download,
+.b-upload {
+  width: 15px;
+  height: 15px;
+}
 .usuario {
   -webkit-mask-image: url("./images/circle-user.svg");
   mask-image: url("./images/circle-user.svg");
 }
 
-/* ----- cor dotexto ----- */
-.textoOuro {
-  background: var(--ouro135);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+.b-floppy {
+  -webkit-mask-image: url("./images/floppy.svg");
+  mask-image: url("./images/floppy.svg");
 }
 
-.tituloPagina, .marca {
-  font-size: 40px;
-  font-weight: bold;
+.b-upload {
+  -webkit-mask-image: url("./images/upload.svg");
+  mask-image: url("./images/upload.svg");
+}
+
+.b-download {
+  -webkit-mask-image: url("./images/download.svg");
+  mask-image: url("./images/download.svg");
+}
+
+/* LINHA DECORATIVA (opcional) */
+.linha {
+  height: 1px;
+  background: var(--ouro-linha);
+  width: 100%;
+}
+
+.copy {
+  border: 1px solid blue;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.5rem;
 }
