@@ -15,33 +15,16 @@ img, picture, video, canvas, span {
 
 /* VARIÁVEIS */
 :root {
-  /* FUNDOS */
-  --bg-principal: #1f1f1f;
-  --bg-secundario: #2a2a2a;
-
-  /* OUROS */
-  --ouro-solido: linear-gradient(
-  135deg,
-  #f5e6a5,
-  #d4af37,
-  #b8962e
-  );
-
-  --ouro-linha: linear-gradient(
-  90deg,
-  transparent,
-  #d4af37 10%,
-  #fff4b8,
-  #d4af37 90%,
-  transparent
-  );
-
-  --texto: #eaeaea;
+  --vermelho: rgba(255, 0, 0, 0.2);
+  --amarelo: rgba(255, 255, 0, 0.2);
+  --verde: rgba(0, 255, 0, 0.2);
+  --azul: rgba(0, 180, 255, 0.2);
 }
 
 html {
   width: 100vw;
   height: 100vh;
+  user-select: none;
 }
 body {
   width: 100%;
@@ -53,6 +36,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+/* ************************** */
 .cabecalho {
   width: 100%;
   border-bottom: 1px solid black;
@@ -60,7 +44,7 @@ body {
   flex-direction: row;
   padding: 10px;
   font-weight: 700;
-box-shadow:
+  box-shadow:
   0 2px 4px rgba(0,0,0,0.18),
   0 8px 16px rgba(0,0,0,0.28);
 }
@@ -102,6 +86,7 @@ h1 {
 .icon-perfil {
   background-image: url("imagens/perfil.svg");
 }
+/* ********************** */
 .rodape {
   position: sticky;
   border-top: 1px solid black;
@@ -110,8 +95,21 @@ h1 {
   0 -8px 20px rgba(0,0,0,0.18);
   padding: 10px;
   display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  font-size: 0.9rem;
+}
+.bts-rodape {
+  padding: 10px;
+  display: flex;
   justify-content: space-evenly;
   font-size: 0.9rem;
+}
+.copy {
+  margin-top: 3px;
+  width: 100%;
+  font-size: 0.5rem;
+  text-align: center;
 }
 .bt {
   background-color: transparent;
@@ -122,13 +120,39 @@ h1 {
   align-items: center;
   justify-content: flex-start;
   border: none;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  border-radius: 5px;
+
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 6px 12px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
   
+    appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bt:active {
+  transform: translateY(1px);
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
-.principal {
-  flex: 1;
+.acao:focus,
+.acao:focus-visible,
+.acao:active {
+  outline: none;
+  box-shadow: none;
 }
-
+.acao:focus,
+.acao:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 .icon {
   width: 16px;
   height: 16px;
@@ -152,9 +176,8 @@ h1 {
 .bt > div {
   display: flex;
   align-items: center;
-  
 }
-.caixa-icon {
+.bt .cx-icon {
   padding: 0 8px;
   height: 100%;
   border: 1px solid black;
@@ -163,12 +186,319 @@ h1 {
   border-radius: 5px 0 0 5px;
 }
 
-.caixa-txt {
+.bt .cx-txt {
   width: 100%;
   height: 100%;
   border: 1px solid black;
   justify-content: flex-start;
   padding-left: 8px;
   border-radius: 0 5px 5px 0;
+}
+/* ****************** */
+.principal {
+  flex: 1;
+  padding: 22px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartaoEstatistica {
+  width: 100%;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.1);
+}
+
+.areaTitulo {
+  width: 100%;
+  height: 30px;
+  padding:;
+  border: 1px solid black;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.ttl > div {
+  display: flex;
+  align-items: center;
+  padding:;
+}
+.ttl .cx-icon {
+  padding: 0 8px;
+  height: 100%;
+  justify-content: center;
+}
+
+.ttl .cx-txt {
+  flex: 1;
+  /*border-width: 0 1px 0 1px;
+  /*apagar*/
+ /* border-style: solid;
+  /*apagar*/
+ /* border-color: black;
+  /*apagar*/
+  justify-content: flex-start;
+  padding-left: 8px;
+}
+
+.ttl .cx-estado {
+  min-width: 80px;
+  justify-content: flex-end;
+  padding: 0 8px 0 8px;
+  font-size: 10px;
+}
+.ttl .cx-acoes {
+  padding: 0 8px;
+  height: 100%;
+  justify-content: center;
+  /*border-width: 0 0 0 1px;/*apagar*/
+  /*border-style: solid;/*apagar*/
+  /*border-color: black;/*apagar*/
+  font-size: 1rem;
+}
+
+.estado {
+  border: 1px solid;
+  padding: 2px 5px;
+  border-radius: 6px;
+}
+/* Vermelho */
+.std-vermelho {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #f00;
+  border-color: #f00;
+}
+/* Laranja */
+.std-laranja {
+  background-color: rgba(255, 165, 0, 0.2);
+  color: #FF8C00;
+  border-color: #FF8C00;
+}
+/* Amarelo */
+.std-amarelo {
+  background-color: rgba(255, 255, 0, 0.2);
+  color: #B8860B;
+  border-color: #B8860B;
+}
+/* Verde */
+.std-verde {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #090;
+  border-color: #090;
+}
+/* Azul */
+.std-azul {
+  background-color: rgba(0, 180, 255, 0.2);
+  color: #00f;
+  border-color: #00f;
+}
+/* Violeta */
+.std-violeta {
+  background-color: rgba(75, 0, 130, 0.2);
+  color: #4B0082;
+  border-color: #4B0082;
+}
+/* Ciano */
+.std-ciano {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: #008B8B;
+  border-color: #008B8B;
+}
+/* Cinza */
+.std-cinza {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: #666;
+  border-color: #666;
+}
+/* Rosa */
+.std-rosa {
+  background-color: rgba(255, 105, 180, 0.2);
+  color: #D81B60;
+  border-color: #D81B60;
+}
+/* Bege */
+.std-bege {
+  background-color: rgba(245, 245, 220, 0.3);
+  color: #8B7355;
+  border-color: #8B7355;
+}
+/* Marrom */
+.std-marrom {
+  background-color: rgba(139, 69, 19, 0.2);
+  color: #5D2E0C;
+  border-color: #5D2E0C;
+}
+/* Coral */
+.std-coral {
+  background-color: rgba(255, 127, 80, 0.2);
+  color: #E64A19;
+  border-color: #E64A19;
+}
+/* Roxo */
+.std-roxo {
+  background-color: rgba(128, 0, 128, 0.2);
+  color: #800080;
+  border-color: #800080;
+}
+/* Branco */
+.std-branco {
+  background-color: rgba(255, 255, 255, 1);
+  color: #666;
+  border-color: #CCC;
+}
+/* Bordô */
+.std-bordo {
+  background-color: rgba(128, 0, 32, 0.2);
+  color: #800020;
+  border-color: #800020;
+}
+/* Lavanda */
+.std-lavanda {
+  background-color: rgba(230, 230, 250, 0.6);
+  color: #7B68EE;
+  border-color: #7B68EE;
+}
+/* Oliva */
+.std-oliva {
+  background-color: rgba(128, 128, 0, 0.2);
+  color: #6B8E23;
+  border-color: #6B8E23;
+}
+
+/* ==========================
+   TEMA PRETO E BRANCO
+   Fundo branco com bordas pretas
+========================== */
+
+/* Área dos botões */
+.cx-acoes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Botões */
+.acao {
+  width: 21px;
+  height: 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent; /* Android */
+
+  padding: 1px;/**/
+  margin: 0;
+  outline: none;
+  font: inherit;
+
+  cursor: pointer;
+  user-select: none;
+
+  /* Fundo branco */
+  background: transparent;
+
+  /* Borda preta */
+  border: 1px solid #000000;
+  
+  /* Bordas redondas */
+  border-radius: 4px;
+  /* Leve relevo estilo clássico */
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #808080;
+
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+/* Ícones */
+.acao i {
+  color: #000000;
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* Ajustes finos */
+.acaoDois i {
+  font-size: 10px;
+}
+
+.acaoUm.expandido i {
+  display: none;
+  font-size: 11px;
+}
+
+.acaoUm i.visivel {
+  display: unset;
+}
+}
+.acaoTres i {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Hover */
+.acao:hover {
+  background: #f2f2f2;
+}
+
+/* Clique */
+.acao:active {
+  background: #e6e6e6;
+  transform: translateY(1px);
+
+  box-shadow:
+    inset -1px -1px 0 #ffffff,
+    inset 1px 1px 0 #808080;
+}
+
+/* Janela principal */
+.janela {
+  background: #ffffff;
+  border: 1px solid #000000;
+}
+
+/* Barra de título */
+.barra-titulo {
+  background: #ffffff;
+  color: #000000;
+  border-bottom: 1px solid #000000;
+}
+
+/* Área de conteúdo */
+.area-cliente {
+  background: #ffffff;
+  color: #000000;
+}
+
+.areaComteudo {
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 0 0 2px 2px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: row;
+  position: relative;
+}
+
+.cmp-inc {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.grupoLabel,
+.grupoInput {
+  width: 20%;
+}
+.grupoSelect,
+.grupoIcones {
+  
 }
 

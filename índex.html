@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Learning Path</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  >
+</head>
+
+<body>
+  <div class="conteudo" id="conteudo">
+
+    <header class="cabecalho">
+      <div class="ld-esquerdo">
+        <div class="logo">
+          BM
+        </div>
+        <span>::</span>
+
+        <h1>
+          <!-- My Learning Path -->
+          Meu Plano de Estudos
+        </h1>
+      </div>
+
+      <div class="ld-direito">
+        <button
+          class="bt-icon icon-config"
+          aria-label="Configurações"
+          ></button>
+
+        <button
+          class="bt-icon icon-perfil"
+          aria-label="Perfil"
+          ></button>
+      </div>
+    </header>
+
+    <main class="principal">
+
+      <!---------- elementos ---------->
+
+      <!----- fixo ----->
+      <section class="cartaoEstatistica sec">
+        <div class="areaTitulo ttl">
+          <div class="cx-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+
+          <div class="cx-txt">
+            Rotina
+          </div>
+
+          <div class="cx-estado">
+            <span class="estado std-verde">ativo</span>
+          </div>
+        </div>
+
+        <div class="areaComteudo">
+        </div>
+      </section>
+
+      <!----- atividade ----->
+      <section class="cartaoEstatistica sec">
+        <div class="areaTitulo ttl">
+          <div class="cx-icon">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+
+          <div class="cx-txt">
+            Disciplina
+          </div>
+
+          <div class="cx-estado">
+            <span class="estado std-coral">a iniciar</span>
+          </div>
+
+          <div class="cx-acoes">
+            <button class="acao acaoUm expandido" type="button">
+              <i class="visivel fa-regular fa-note-sticky"></i>
+              <i class="fa-solid fa-note-sticky"></i>
+            </button>
+
+            <button class="acao acaoDois" type="button">
+              <i class="fa-solid fa-thumbs-up"></i>
+            </button>
+
+            <button class="acao acaoTres" type="button">
+              <i class="fa-solid fa-file-pen"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="areaComteudo">
+        </div>
+      </section>
+
+      <!----- atividade incluir / editar ----->
+      <form class="cartaoEstatistica sec">
+        <div class="areaTitulo ttl">
+          <div class="cx-icon">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+
+          <div class="cx-txt">
+            incluir
+          </div>
+
+          <div class="cx-estado">
+            <span class="estado std-cinza">iniciado</span>
+          </div>
+
+          <div class="cx-acoes">
+            <button type="submit" class="acao acaoUm">
+              <i class="fa-solid fa-check"></i>
+            </button>
+
+            <button type="button" class="acao acaoDois">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+
+            <button type="button" class="acao acaoTres">
+              <i class="fa-solid fa-file-circle-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="areaComteudo">
+          <div class="grupoCampo cmp-inc">
+            <div class="grupoLabel">
+              <label for="nomeDisciplina">
+                Disciplina:
+              </label>
+            </div>
+
+            <div class="grupoInput">
+              <input
+              type="text"
+              id="nomeDisciplina"
+              name="nomeDisciplina"
+              placeholder="Digite o nome da disciplina"
+              >
+            </div>
+          </div>
+          <div class="grupoCampo cmp-inc">
+            <div class="grupoSelect">
+              <select name="categoria" id="categoria" required>
+                <option value="" selected disabled>
+                  Selecione
+                </option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="academico">Acadêmico</option>
+                <option value="concurso">Concurso</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+
+            <div class="grupoIcones">
+              <i class="fa-brands fa-html5"></i>
+              <i class="fa-brands fa-css3-alt"></i>
+              <i class="fa-brands fa-js"></i>
+              <i class="fa-brands fa-python"></i>
+              <i class="fa-brands fa-php"></i>
+              <i class="fa-brands fa-laravel"></i>
+              <i class="fa-brands fa-angular"></i>
+              <i class="fa-brands fa-node-js"></i>
+              <i class="fa-brands fa-unity"></i>
+              <i class="fa-brands fa-android"></i>
+            </div>
+          </div>
+          <div class="grupoCampo cmp-inc">
+            <div class="grupoLabel">
+              <label for="nomeAtividade">
+                Atividade:
+              </label>
+            </div>
+
+            <div class="grupoInput">
+              <input
+              type="text"
+              id="nomeAtividade"
+              name="nomeAtividade"
+              placeholder="Descreva a atividade"
+              >
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+      <!-------- fim elementos -------->
+
+    </main>
+
+    <footer class="rodape">
+      <div class="bts-rodape">
+
+        <button class="bt">
+          <div class="cx-icon">
+            <i class="icon icon-salvar"></i>
+          </div>
+
+          <div class="cx-txt">
+            <span>Salvar</span>
+          </div>
+        </button>
+
+        <button class="bt">
+          <div class="cx-icon">
+            <i class="icon icon-download"></i>
+          </div>
+
+          <div class="cx-txt">
+            guardar
+          </div>
+        </button>
+
+        <button class="bt">
+          <div class="cx-icon">
+            <i class="icon icon-upload"></i>
+          </div>
+
+          <div class="cx-txt">
+            carregar
+          </div>
+        </button>
+
+      </div>
+
+      <div class="copy">
+        Bruno Moraes - 2026
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
