@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualização de Cores</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .amostra {
+      width: 180px;
+      padding: 12px;
+      border: 2px solid;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .vermelho { background-color: rgba(255, 0, 0, 0.2); color: #f00; border-color: #f00; }
+    .coral { background-color: rgba(255, 127, 80, 0.2); color: #E64A19; border-color: #E64A19; }
+    .salmao { background-color: rgba(250, 128, 114, 0.2); color: #CD5C5C; border-color: #FA8072; }
+
+    .laranja { background-color: rgba(255, 165, 0, 0.2); color: #FF8C00; border-color: #FF8C00; }
+    .amarelo { background-color: rgb(255, 255, 0); color: #FFD700; border-color: #FFD700; }
+    .dourado { background-color: rgba(255, 215, 0, 0.25); color: #996F00; border-color: #FFD700; }
+    .bronze { background-color: rgba(205, 127, 50, 0.2); color: #8B4513; border-color: #CD7F32; }
+    .pessego { background-color: rgba(255, 218, 185, 0.4); color: #D2691E; border-color: #FFB07C; }
+    .creme { background-color: rgba(255, 253, 208, 0.5); color: #8B7D3A; border-color: #EEE8AA; }
+
+    .rosa { background-color: rgba(255, 105, 180, 0.2); color: #D81B60; border-color: #D81B60; }
+    .lavanda { background-color: rgba(230, 230, 250, 0.6); color: #7B68EE; border-color: #7B68EE; }
+    .violeta { background-color: rgba(75, 0, 130, 0.2); color: #4B0082; border-color: #4B0082; }
+    .roxo { background-color: rgba(128, 0, 128, 0.2); color: #800080; border-color: #800080; }
+    .indigo { background-color: rgba(75, 0, 130, 0.15); color: #483D8B; border-color: #4B0082; }
+    .ameixa { background-color: rgba(142, 69, 133, 0.15); color: #6A1B5D; border-color: #8E4585; }
+
+    .bege { background-color: rgba(245, 245, 220, 0.3); color: #8B7355; border-color: #8B7355; }
+    .marrom { background-color: rgba(139, 69, 19, 0.2); color: #5D2E0C; border-color: #5D2E0C; }
+    .bordo { background-color: rgba(128, 0, 32, 0.2); color: #800020; border-color: #800020; }
+
+    .amarelo-limao { background-color: rgba(204, 255, 0, 0.25); color: #7A9A01; border-color: #CCFF00; }
+    .verde { background-color: rgba(0, 255, 0, 0.2); color: #090; border-color: #090; }
+    .oliva { background-color: rgba(128, 128, 0, 0.2); color: #6B8E23; border-color: #6B8E23; }
+    .esmeralda { background-color: rgba(0, 255, 127, 0.2); color: #008F5A; border-color: #00C878; }
+
+    .ciano { background-color: rgba(0, 255, 255, 0.2); color: #008B8B; border-color: #008B8B; }
+    .azul { background-color: rgba(0, 180, 255, 0.2); color: #00f; border-color: #00f; }
+    .azul-ceu { background-color: rgba(135, 206, 235, 0.3); color: #1E88C8; border-color: #87CEEB; }
+    .azul-marinho { background-color: rgba(0, 0, 128, 0.15); color: #000080; border-color: #000080; }
+    .azul-petroleo { background-color: rgba(0, 95, 115, 0.15); color: #004D61; border-color: #005F73; }
+
+    /* Cinzas, Pretos e Neutros */
+    .cinza { background-color: rgba(128, 128, 128, 0.2); color: #666; border-color: #666; }
+    .grafite { background-color: rgba(54, 69, 79, 0.15); color: #2F4F4F; border-color: #36454F; }
+    .cinza-escuro { background-color: #555555; color: #FFFFFF; border-color: #FFFFFF; }
+    .prata { background-color: rgba(192, 192, 192, 0.25); color: #708090; border-color: #C0C0C0; }
+    .preto-suave { background-color: rgba(0, 0, 0, 0.08); color: #222222; border-color: #444444; }
+    .branco-gelo { background-color: #F8F9FA; color: #6C757D; border-color: #DEE2E6; }
+    .branco { background-color: #FFFFFF; color: #000000; border-color: #000000; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="amostra vermelho">Vermelho</div>
+    <div class="amostra bordo">Bordô</div>
+    <div class="amostra coral">Coral</div>
+    <div class="amostra salmao">Salmão</div>
+    <div class="amostra laranja">Laranja</div>
+    <div class="amostra amarelo">Amarelo</div>
+    <div class="amostra amarelo-limao">Amarelo Limão</div>
+    <div class="amostra dourado">Dourado</div>
+    <div class="amostra bronze">Bronze</div>
+    <div class="amostra pessego">Pêssego</div>
+    <div class="amostra creme">Creme</div>
+    <div class="amostra rosa">Rosa</div>
+    <div class="amostra lavanda">Lavanda</div>
+    <div class="amostra violeta">Violeta</div>
+    <div class="amostra roxo">Roxo</div>
+    <div class="amostra indigo">Índigo</div>
+    <div class="amostra ameixa">Ameixa</div>
+    <div class="amostra bege">Bege</div>
+    <div class="amostra marrom">Marrom</div>
+    <div class="amostra verde">Verde</div>
+    <div class="amostra oliva">Oliva</div>
+    <div class="amostra esmeralda">Esmeralda</div>
+    <div class="amostra ciano">Ciano</div>
+    <div class="amostra azul">Azul</div>
+    <div class="amostra azul-ceu">Azul Céu</div>
+    <div class="amostra azul-marinho">Azul Marinho</div>
+    <div class="amostra azul-petroleo">Azul Petróleo</div>
+    <div class="amostra cinza">Cinza</div>
+    <div class="amostra grafite">Grafite</div>
+    <div class="amostra cinza-escuro">Cinza Escuro</div>
+    <div class="amostra prata">Prata</div>
+    <div class="amostra preto-suave">Preto Suave</div>
+    <div class="amostra branco-gelo">Branco Gelo</div>
+    <div class="amostra branco">Branco</div>
+  </div>
+</body>
+</html>

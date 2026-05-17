@@ -20,7 +20,7 @@
   <div class="conteudo" id="conteudo">
 
     <header class="cabecalho">
-      <div class="ld-esquerdo">
+      <div class="lado-esquerdo">
         <div class="logo">
           BM
         </div>
@@ -32,14 +32,14 @@
         </h1>
       </div>
 
-      <div class="ld-direito">
+      <div class="lado-direito">
         <button
-          class="bt-icon icon-config"
+          class="botao-icone icon-config"
           aria-label="Configurações"
           ></button>
 
         <button
-          class="bt-icon icon-perfil"
+          class="botao-icone icon-perfil"
           aria-label="Perfil"
           ></button>
       </div>
@@ -50,92 +50,92 @@
       <!---------- elementos ---------->
 
       <!----- fixo ----->
-      <section class="cartaoEstatistica sec">
-        <div class="areaTitulo ttl">
-          <div class="cx-icon">
+      <section class="cartaoEstatistica secao">
+        <div class="areaTitulo titulo">
+          <div class="caixa-icone">
             <i class="fa-solid fa-chart-line"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             Rotina
           </div>
 
-          <div class="cx-estado">
-            <span class="estado std-verde">ativo</span>
+          <div class="caixa-estado">
+            <span class="estado verde">ativo</span>
           </div>
         </div>
 
-        <div class="areaComteudo">
+        <div class="area-conteudo">
         </div>
       </section>
 
       <!----- atividade ----->
-      <section class="cartaoEstatistica sec">
-        <div class="areaTitulo ttl">
-          <div class="cx-icon">
+      <section class="cartaoEstatistica secao">
+        <div class="areaTitulo titulo">
+          <div class="caixa-icone">
             <i class="fa-solid fa-book-bookmark"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             Disciplina
           </div>
 
-          <div class="cx-estado">
-            <span class="estado std-coral">a iniciar</span>
+          <div class="caixa-estado">
+            <span class="estado coral">a iniciar</span>
           </div>
 
-          <div class="cx-acoes">
-            <button class="acao acaoUm expandido" type="button">
+          <div class="caixa-acoes">
+            <button class="acao acao-notas expandido" type="button">
               <i class="visivel fa-regular fa-note-sticky"></i>
               <i class="fa-solid fa-note-sticky"></i>
             </button>
 
-            <button class="acao acaoDois" type="button">
+            <button class="acao acao-curtir" type="button">
               <i class="fa-solid fa-thumbs-up"></i>
             </button>
 
-            <button class="acao acaoTres" type="button">
+            <button class="acao acao-editar" type="button">
               <i class="fa-solid fa-file-pen"></i>
             </button>
           </div>
         </div>
 
-        <div class="areaComteudo">
+        <div class="area-conteudo">
         </div>
       </section>
 
       <!----- atividade incluir / editar ----->
-      <form class="cartaoEstatistica sec">
-        <div class="areaTitulo ttl">
-          <div class="cx-icon">
+      <form class="cartaoEstatistica secao">
+        <div class="areaTitulo titulo">
+          <div class="caixa-icone">
             <i class="fa-solid fa-sliders"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             incluir
           </div>
 
-          <div class="cx-estado">
-            <span class="estado std-cinza">iniciado</span>
+          <div class="caixa-estado">
+            <span class="estado cinza">iniciado</span>
           </div>
 
-          <div class="cx-acoes">
-            <button type="submit" class="acao acaoUm">
+          <div class="caixa-acoes">
+            <button type="submit" class="acao acao-notas">
               <i class="fa-solid fa-check"></i>
             </button>
 
-            <button type="button" class="acao acaoDois">
+            <button type="button" class="acao acao-curtir">
               <i class="fa-solid fa-trash-can"></i>
             </button>
 
-            <button type="button" class="acao acaoTres">
+            <button type="button" class="acao acao-editar">
               <i class="fa-solid fa-file-circle-xmark"></i>
             </button>
           </div>
         </div>
 
-        <div class="areaComteudo">
-          <div class="grupoCampo cmp-inc">
+        <div class="area-conteudo">
+          <div class="grupoCampo campo-inclusao">
             <div class="grupoLabel">
               <label for="nomeDisciplina">
                 Disciplina:
@@ -151,7 +151,8 @@
               >
             </div>
           </div>
-          <div class="grupoCampo cmp-inc">
+
+          <div class="grupoCampo campo-inclusao">
             <div class="grupoSelect">
               <select name="categoria" id="categoria" required>
                 <option value="" selected disabled>
@@ -177,7 +178,8 @@
               <i class="fa-brands fa-android"></i>
             </div>
           </div>
-          <div class="grupoCampo cmp-inc">
+
+          <div class="grupoCampo campo-inclusao">
             <div class="grupoLabel">
               <label for="nomeAtividade">
                 Atividade:
@@ -202,41 +204,41 @@
     </main>
 
     <footer class="rodape">
-      <div class="bts-rodape">
+      <div class="botoes-rodape">
 
-        <button class="bt">
-          <div class="cx-icon">
+        <button class="botao">
+          <div class="caixa-icone">
             <i class="icon icon-salvar"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             <span>Salvar</span>
           </div>
         </button>
 
-        <button class="bt">
-          <div class="cx-icon">
+        <button class="botao">
+          <div class="caixa-icone">
             <i class="icon icon-download"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             guardar
           </div>
         </button>
 
-        <button class="bt">
-          <div class="cx-icon">
+        <button class="botao">
+          <div class="caixa-icone">
             <i class="icon icon-upload"></i>
           </div>
 
-          <div class="cx-txt">
+          <div class="caixa-texto">
             carregar
           </div>
         </button>
 
       </div>
 
-      <div class="copy">
+      <div class="copyright">
         Bruno Moraes - 2026
       </div>
     </footer>
