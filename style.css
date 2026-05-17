@@ -485,6 +485,7 @@ h1 {
   flex-direction: column;
   flex-basis: row;
   position: relative;
+  font-size: 1rem;
 }
 
 .cmp-inc {
@@ -494,11 +495,21 @@ h1 {
 }
 
 .grupoLabel,
-.grupoInput {
-  width: 20%;
+.grupoSelect {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
 }
-.grupoSelect,
-.grupoIcones {
-  
+
+.grupoIcones,
+.grupoInput {
+    height: 80px;
+}
+
+input::placeholder {
+  color: #888;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 100;
 }
 
