@@ -1,248 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Learning Path</title>
+  <title>Roadmap</title>
 
   <link rel="stylesheet" href="style.css">
 
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- font cursiva -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <!-- font-family: "Allura", cursive; -->
 </head>
 
-<body>
-  <div class="conteudo" id="conteudo">
-
+<body class="tema-caro">
+  <div class="conteudo">
     <header class="cabecalho">
-      <div class="lado-esquerdo">
-        <div class="logo">
-          BM
-        </div>
-        <span>::</span>
-
-        <h1>
-          <!-- My Learning Path -->
-          Meu Plano de Estudos
-        </h1>
-      </div>
-
+      <div class="lado-esquerdo">BM :: Roadmap</div>
       <div class="lado-direito">
-        <button
-          class="botao-icone icon-config"
-          aria-label="Configurações"
-          ></button>
-
-        <button
-          class="botao-icone icon-perfil"
-          aria-label="Perfil"
-          ></button>
+        <div class="caixa-icone"><i class="fa-solid fa-circle-user"></i></div>
+        <div class="caixa-icone"><i class="fa-solid fa-gear"></i></div>
+        <div class="caixa-icone"><i class="fa-solid fa-right-to-bracket"></i></div>
+        <div class="caixa-icone"><i class="fa-solid fa-right-from-bracket"></i></div>
       </div>
     </header>
-
     <main class="principal">
-
-      <!---------- elementos ---------->
-
-      <!----- fixo ----->
-      <section class="cartaoEstatistica secao">
-        <div class="areaTitulo titulo">
-          <div class="caixa-icone">
-            <i class="fa-solid fa-chart-line"></i>
+      <div class="cartao">
+        <div class="barra-titulo-cartao">
+          <div class="lado-esquerdo">
+            <div class="icone-cartao">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="nome-cartao">Atividade Visão geral</div>
           </div>
-
-          <div class="caixa-texto">
-            Rotina
-          </div>
-
-          <div class="caixa-estado">
-            <span class="estado verde">ativo</span>
+          <div class="lado-direito">
+            <div class="estado-cartao">ativo</div>
+            <div class="caixa-icone"><i class="fa-solid fa-thumbs-up"></i></div>
+            <div class="caixa-icone"><i class="fa-solid fa-file-pen"></i></div>
           </div>
         </div>
+        <div class="corpo-cartao">
 
-        <div class="area-conteudo">
         </div>
-      </section>
-
-      <!----- atividade ----->
-      <section class="cartaoEstatistica secao">
-        <div class="areaTitulo titulo">
-          <div class="caixa-icone">
-            <i class="fa-solid fa-book-bookmark"></i>
+      </div>
+      <div class="cartao">
+        <div class="barra-titulo-cartao">
+          <div class="lado-esquerdo">
+            <div class="icone-cartao">
+              <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <div class="nome-cartao">nome do cartao</div>
           </div>
-
-          <div class="caixa-texto">
-            Disciplina
-          </div>
-
-          <div class="caixa-estado">
-            <span class="estado coral">a iniciar</span>
-          </div>
-
-          <div class="caixa-acoes">
-            <button class="acao acao-notas expandido" type="button">
-              <i class="visivel fa-regular fa-note-sticky"></i>
-              <i class="fa-solid fa-note-sticky"></i>
-            </button>
-
-            <button class="acao acao-curtir" type="button">
-              <i class="fa-solid fa-thumbs-up"></i>
-            </button>
-
-            <button class="acao acao-editar" type="button">
-              <i class="fa-solid fa-file-pen"></i>
-            </button>
+          <div class="lado-direito">
+            <div class="estado-cartao">ativo</div>
+            <div class="caixa-icone"><i class="fa-regular fa-note-sticky"></i></div>
+            <div class="caixa-icone"><i class="fa-solid fa-note-sticky"></i></div>
+            <div class="caixa-icone"><i class="fa-solid fa-thumbs-up"></i></div>
+            <div class="caixa-icone"><i class="fa-solid fa-file-pen"></i></div>
           </div>
         </div>
+        <div class="corpo-cartao">
 
-        <div class="area-conteudo">
         </div>
-      </section>
-
-      <!----- atividade incluir / editar ----->
-      <form class="cartaoEstatistica secao">
-        <div class="areaTitulo titulo">
-          <div class="caixa-icone">
-            <i class="fa-solid fa-sliders"></i>
-          </div>
-
-          <div class="caixa-texto">
-            incluir
-          </div>
-
-          <div class="caixa-estado">
-            <span class="estado cinza">iniciado</span>
-          </div>
-
-          <div class="caixa-acoes">
-            <button type="submit" class="acao acao-notas">
-              <i class="fa-solid fa-check"></i>
-            </button>
-
-            <button type="button" class="acao acao-curtir">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-
-            <button type="button" class="acao acao-editar">
-              <i class="fa-solid fa-file-circle-xmark"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="area-conteudo">
-          <div class="grupoCampo campo-inclusao">
-            <div class="grupoLabel">
-              <label for="nomeDisciplina">
-                Disciplina:
-              </label>
-            </div>
-
-            <div class="grupoInput">
-              <input
-              type="text"
-              id="nomeDisciplina"
-              name="nomeDisciplina"
-              placeholder="Digite o nome da disciplina"
-              >
-            </div>
-          </div>
-
-          <div class="grupoCampo campo-inclusao">
-            <div class="grupoSelect">
-              <select name="categoria" id="categoria" required>
-                <option value="" selected disabled>
-                  Selecione
-                </option>
-                <option value="tecnologia">Tecnologia</option>
-                <option value="academico">Acadêmico</option>
-                <option value="concurso">Concurso</option>
-                <option value="outros">Outros</option>
-              </select>
-            </div>
-
-            <div class="grupoIcones">
-              <i class="fa-brands fa-html5"></i>
-              <i class="fa-brands fa-css3-alt"></i>
-              <i class="fa-brands fa-js"></i>
-              <i class="fa-brands fa-python"></i>
-              <i class="fa-brands fa-php"></i>
-              <i class="fa-brands fa-laravel"></i>
-              <i class="fa-brands fa-angular"></i>
-              <i class="fa-brands fa-node-js"></i>
-              <i class="fa-brands fa-unity"></i>
-              <i class="fa-brands fa-android"></i>
-            </div>
-          </div>
-
-          <div class="grupoCampo campo-inclusao">
-            <div class="grupoLabel">
-              <label for="nomeAtividade">
-                Atividade:
-              </label>
-            </div>
-
-            <div class="grupoInput">
-              <input
-              type="text"
-              id="nomeAtividade"
-              name="nomeAtividade"
-              placeholder="Descreva a atividade"
-              >
-            </div>
-          </div>
-        </div>
-
-      </form>
-
-      <!-------- fim elementos -------->
-
+      </div>
     </main>
-
     <footer class="rodape">
-      <div class="botoes-rodape">
-
-        <button class="botao">
-          <div class="caixa-icone">
-            <i class="icon icon-salvar"></i>
-          </div>
-
-          <div class="caixa-texto">
-            <span>Salvar</span>
-          </div>
-        </button>
-
-        <button class="botao">
-          <div class="caixa-icone">
-            <i class="icon icon-download"></i>
-          </div>
-
-          <div class="caixa-texto">
-            guardar
-          </div>
-        </button>
-
-        <button class="botao">
-          <div class="caixa-icone">
-            <i class="icon icon-upload"></i>
-          </div>
-
-          <div class="caixa-texto">
-            carregar
-          </div>
-        </button>
-
-      </div>
-
-      <div class="copyright">
-        Bruno Moraes - 2026
-      </div>
+      <div class="copy">&copy; Bruno Moraes 2026 &nbsp;|&nbsp; AGPL-3.0 license</div>
     </footer>
-
   </div>
 </body>
+
 </html>
+
+<!--
+          
+
+          <i class="fa-solid fa-sliders"></i>
+
+          <i class="fa-solid fa-check"></i>
+
+          <i class="fa-solid fa-trash-can"></i>
+
+          <i class="fa-solid fa-file-circle-xmark"></i>
+
+          <i class="fa-brands fa-html5"></i>
+
+          <i class="fa-brands fa-css3-alt"></i>
+
+          <i class="fa-brands fa-js"></i>
+
+      <i class="fa-solid fa-chart-line"></i>
+
+      <i class="fa-solid fa-book-bookmark"></i>
+
+      <i class="fa-regular fa-note-sticky"></i>
+
+      <i class="fa-solid fa-note-sticky"></i>
+
+      <i class="fa-solid fa-thumbs-up"></i>
+
+      <i class="fa-solid fa-file-pen"></i>
+
+      <i class="fa-solid fa-sliders"></i>
+
+      <i class="fa-solid fa-check"></i>
+
+      <i class="fa-solid fa-trash-can"></i>
+
+      <i class="fa-solid fa-file-circle-xmark"></i>
+
+      <i class="fa-brands fa-html5"></i>
+
+      <i class="fa-brands fa-css3-alt"></i>
+
+      <i class="fa-brands fa-js"></i>
+
+
+      <i class="fa-brands fa-python"></i>
+
+
+      <i class="fa-solid fa-c"></i>
+
+      <i class="fa-solid fa-database"></i>
+
+      <i class="fa-brands fa-php"></i>
+
+      <i class="fa-brands fa-laravel"></i>
+
+      <i class="fa-brands fa-angular"></i>
+
+      <i class="fa-solid fa-fire"></i>
+
+      <i class="fa-brands fa-node-js"></i>
+
+      <i class="fa-brands fa-unity"></i>
+
+      <i class="fa-brands fa-android"></i>
+
+      <i class="fa-brands fa-android"></i>
+
+-->
