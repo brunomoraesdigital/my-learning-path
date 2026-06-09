@@ -1,0 +1,28 @@
+• elementoCaixaAno  |  elemento do DOM que representa a caixa do ano
+• elementoCaixaSemanasAno  |  elemento da caixa que exibe os números das semanas
+• elementoCaixaDiasSemana  |  elemento com os rótulos dos dias da semana
+• elementoDiario  |  elemento que contém a grade dos dias do ano
+• hoje  |  data atual completa
+• inicioAno  |  data do último dia do ano anterior (referência para cálculo)
+• diferencaDias  |  diferença em milissegundos entre hoje e o início do ano
+• umDia  |  quantidade de milissegundos em um dia
+• diaAnoAtualBase  |  número do dia no ano (1‑indexado) sem ajuste de deslocamento
+• anoAtual  |  ano corrente
+• mesAtual  |  mês atual (0–11)
+• diaMesAtual  |  dia do mês atual
+• diaSemanaAtual  |  dia da semana atual (0–6)
+• diaAnoAtual  |  mesmo valor de diaAnoAtualBase (mantido para clareza)
+• anoBissexto  |  indica se o ano atual é bissexto
+• diasAno  |  total de dias do ano (365 ou 366)
+• ajusteDiaSemanaInicio  |  valor auxiliar para calcular o dia da semana de início do ano
+• diaSemanaInicioAno  |  deslocamento do primeiro dia do ano em relação à segunda‑feira
+• criaDias  |  função que monta a grade de células dos dias e pinta percorridos, mortos e atual
+• criaSemanasAno  |  função que cria os indicadores de semanas (1 a 53)
+• celulasDia  |  array com todas as células de dia criadas
+• indiceDiaAtual  |  posição (índice) da célula correspondente ao dia de hoje na grade completa
+• celula-dia (classe/id)  |  classe e prefixo de id de cada célula de dia
+• percorrido (classe)  |  classe que marca os dias já transcorridos
+• morto (classe)  |  classe para células que não pertencem ao ano (dias antes do início)
+• marca-dia-atual (classe)  |  classe que destaca a célula do dia atual
+• semanas-ano (classe/id)  |  classe e prefixo de id de cada indicador de semana
+• licenca (classe)  |  classe do rodapé que exibe a informação de copyright (antes copy)

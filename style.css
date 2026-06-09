@@ -54,19 +54,17 @@ body {
   width: 100%;
   border-bottom: 1px solid transparent;
   border-image:
-  linear-gradient(90deg,
-  transparent 0%,
-  rgba(0, 0, 0, 0.2) 5%,
-  rgba(0, 0, 0, 0.6) 40%,
-  #000 50%,
-  rgba(0, 0, 0, 0.6) 60%,
-  rgba(0, 0, 0, 0.2) 95%,
-  transparent 100%) 1;
-  box-shadow:
-  0 8px 18px -12px rgba(0, 0, 0, 0.9);
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 5%,
+      rgba(0, 0, 0, 0.6) 40%,
+      #000 50%,
+      rgba(0, 0, 0, 0.6) 60%,
+      rgba(0, 0, 0, 0.2) 95%,
+      transparent 100%) 1;
+  box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.9);
   padding: 10px 10px;
   display: flex;
-
 }
 
 .lado-esquerdo {
@@ -87,20 +85,17 @@ body {
 
 .rodape {
   width: 100%;
-
   border-top: 1px solid transparent;
-
   border-image:
-  linear-gradient(90deg,
-  transparent 0%,
-  rgba(0, 0, 0, 0.2) 5%,
-  rgba(0, 0, 0, 0.6) 40%,
-  #000 50%,
-  rgba(0, 0, 0, 0.6) 60%,
-  rgba(0, 0, 0, 0.2) 95%,
-  transparent 100%) 1;
-  box-shadow:
-  0 -8px 18px -12px rgba(0, 0, 0, 0.9);
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 5%,
+      rgba(0, 0, 0, 0.6) 40%,
+      #000 50%,
+      rgba(0, 0, 0, 0.6) 60%,
+      rgba(0, 0, 0, 0.2) 95%,
+      transparent 100%) 1;
+  box-shadow: 0 -8px 18px -12px rgba(0, 0, 0, 0.9);
   padding: 10px 0;
   text-align: center;
 }
@@ -131,25 +126,104 @@ body {
 }
 
 .corpo-cartao {
-  padding: 10px 0;
+  width: 100%;
   border: 1px solid black;
   border-radius: 0 0 3px 3px;
-  padding: 5px 10px;
-  height: 100px;
+  padding: 5px;
 }
 
-.caixa-registro {
+.calendario {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 30px 20px 1fr;
+  grid-template-areas:
+    "caixa-ano caixa-ano"
+    "canto-vazio caixa-semanas-ano"
+    "caixa-dias-semana diario";
+  border: 1px solid black;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: flex-start;
-  gap: 3px;
 }
-.registro {
-  height: 10px;
-  width: 10px;
+
+.caixa-ano {
+  grid-area: caixa-ano;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canto-vazio {
+  grid-area: canto-vazio;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: black;
+}
+
+.caixa-semanas-ano {
+  grid-area: caixa-semanas-ano;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: flex-start;
+  padding: 2px;
+  gap: 1px;
+  border-bottom: 1px solid black;
+  overflow-x: scroll;
+}
+
+.caixa-semanas-ano > div {
+  border: 1px solid black;
+  font-size: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  width: 15px;
+}
+
+.caixa-dias-semana {
+  grid-area: caixa-dias-semana;
+  display: grid;
+  grid-template-rows: repeat(7, 15px);
+  grid-auto-flow: column;
+  padding: 2px;
+  gap: 1px;
+  border-right: 1px solid black;
+  overflow-x: scroll;
+}
+
+.caixa-dias-semana > div {
+  border: 1px solid black;
+  font-size: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diario {
+  grid-area: diario;
+  display: grid;
+  grid-template-rows: repeat(7, 15px);
+  grid-auto-flow: column;
+  padding: 2px;
+  gap: 1px;
+  overflow-x: scroll;
+}
+
+.celula-dia {
+  height: 15px;
+  width: 15px;
   border: 1px solid gray;
   flex-shrink: 0;
+}
+
+.percorrido {
+  background-color: #e5e5e5;
+}
+
+.morto {
+  opacity: 0.3;
+}
+
+.marca-dia-atual {
+  background-color: #9d9d9d;
 }

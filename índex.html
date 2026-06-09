@@ -1,73 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous" referrerpolicy="no-referrer">
-    <!-- font cursiva -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-    <!-- font-family: "Allura", cursive; -->
-  </head>
-  <body class="tema-caro">
-    <div class="conteudo">
-      <header class="cabecalho">
-        <div class="lado-esquerdo">
-          BM :: Roadmap
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- font cursiva -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <!-- font-family: "Allura", cursive; -->
+</head>
+<body class="tema-caro">
+  <div class="conteudo">
+    <header class="cabecalho">
+      <div class="lado-esquerdo">
+        BM :: Roadmap
+      </div>
+      <div class="lado-direito">
+        <div class="caixa-icone">
+          <i class="fa-solid fa-circle-user"></i>
         </div>
-        <div class="lado-direito">
-          <div class="caixa-icone">
-            <i class="fa-solid fa-circle-user"></i>
-          </div>
-          <div class="caixa-icone">
-            <i class="fa-solid fa-gear"></i>
-          </div>
-          <div class="caixa-icone">
-            <i class="fa-solid fa-right-to-bracket"></i>
-          </div>
-          <div class="caixa-icone">
-            <i class="fa-solid fa-right-from-bracket"></i>
-          </div>
+        <div class="caixa-icone">
+          <i class="fa-solid fa-gear"></i>
         </div>
-      </header>
-      <main class="principal">
-        <div class="cartao">
-          <div class="barra-titulo-cartao">
-            <div class="lado-esquerdo">
-              <div class="icone-cartao">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <div class="nome-cartao">
-                Rotina ~ Visão Geral
-              </div>
-
+        <div class="caixa-icone">
+          <i class="fa-solid fa-right-to-bracket"></i>
+        </div>
+        <div class="caixa-icone">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+      </div>
+    </header>
+    <main class="principal">
+      <div class="cartao">
+        <div class="barra-titulo-cartao">
+          <div class="lado-esquerdo">
+            <div class="icone-cartao">
+              <i class="fa-solid fa-chart-line"></i>
             </div>
-            <div class="lado-direito">
-              <div class="estado-cartao">
-                ativo
-              </div>
-              <div class="caixa-dias">
-                11
-              </div>
+            <div class="nome-cartao">
+              Rotina ~ Visão Geral
             </div>
           </div>
-          <div id="corpo-cartao" class="corpo-cartao">
-            <div id="caixa-registro" class="caixa-registro">
+          <div class="lado-direito">
+            <div class="estado-cartao">
+              ativo
+            </div>
+            <div class="caixa-dias">
+              11
             </div>
           </div>
         </div>
-      </main>
-      <footer class="rodape">
-        <div class="copy">
-          &copy; Bruno Moraes 2026 &nbsp;|&nbsp; AGPL-3.0 license
+        <div id="corpo-cartao" class="corpo-cartao">
+          <div class="calendario">
+            <div id="caixa-ano" class="caixa-ano">
+              2026
+            </div>
+            <div class="canto-vazio">
+              &nbsp;
+            </div>
+            <div id="caixa-semanas-ano" class="caixa-semanas-ano">
+            </div>
+            <div id="caixa-dias-semana" class="caixa-dias-semana">
+              <div>dom</div>
+              <div>seg</div>
+              <div>ter</div>
+              <div>qua</div>
+              <div>qui</div>
+              <div>sex</div>
+              <div>sab</div>
+            </div>
+            <div id="diario" class="diario">
+            </div>
+          </div>
         </div>
-      </footer>
-    </div>
-     <script src="script.js"></script>
-  </body>
+      </div>
+    </main>
+    <footer class="rodape">
+      <div class="licenca">
+        &copy; Bruno Moraes 2026 &nbsp;|&nbsp; AGPL-3.0 license
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
+<!--
++-------------------------------------+
+|              caixa-ano              |
++-----------------+-------------------+
+| canto-vazio     | caixa-semanas-ano |
++-----------------+-------------------+
+|caixa-dias-semana|                   |
+|                 |      diario       |
+|                 |       "           |
++-----------------+-------------------+
+-->
