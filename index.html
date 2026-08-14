@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>BM :: Roadmap</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
-    /* --- PALETA EXCLUSIVA EM TONS PASTEL (ESTILO GITHUB SUAVE) --- */
+    /* ===== RESET E VARIÁVEIS ===== */
     :root {
       --bg-principal: #fafafa;
       --bg-card: #f1f3f5;
@@ -18,23 +18,19 @@
       --celula-percorrida: #cbd5e1;
       --marca-atual: #475569;
       
-      /* Intensidades Pastel (Verdes / Conclusão) */
       --p-25: #c9f2d6;
       --p-50: #93e6b4;
       --p-75: #5cd992;
       --p-100: #34b271;
-      --fonte: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-
-      /* Cores Base das Sub-Abas do Bloco de Notas (Pastel Médio) */
-      --aba-not-0: #f8fafc; /* Branco */
-      --aba-not-1: #fecdd3; /* Vermelho/Rosa */
-      --aba-not-2: #ffedd5; /* Laranja */
-      --aba-not-3: #fef9c3; /* Amarelo */
-      --aba-not-4: #dcfce7; /* Verde */
-      --aba-not-5: #e0f2fe; /* Azul */
-      --aba-not-6: #f3e8ff; /* Violeta */
-
-      /* Cores Base do Campo de Texto (Pastel Bem Clarinho) */
+      
+      --aba-not-0: #f8fafc;
+      --aba-not-1: #fecdd3;
+      --aba-not-2: #ffedd5;
+      --aba-not-3: #fef9c3;
+      --aba-not-4: #dcfce7;
+      --aba-not-5: #e0f2fe;
+      --aba-not-6: #f3e8ff;
+      
       --txt-not-0: #ffffff;
       --txt-not-1: #fff1f2;
       --txt-not-2: #fff7ed;
@@ -42,6 +38,8 @@
       --txt-not-4: #f0fdf4;
       --txt-not-5: #f0f9ff;
       --txt-not-6: #faf5ff;
+      
+      --fonte: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
     [data-theme="dark"] {
@@ -58,8 +56,7 @@
       --p-50: #1f774c;
       --p-75: #2fa367;
       --p-100: #3ebd7d;
-
-      /* Cores Escuras Pastel para o Bloco */
+      
       --aba-not-0: #2d2d38;
       --aba-not-1: #4c262a;
       --aba-not-2: #4c3426;
@@ -67,7 +64,7 @@
       --aba-not-4: #234731;
       --aba-not-5: #223d4c;
       --aba-not-6: #3b2a4c;
-
+      
       --txt-not-0: #25252e;
       --txt-not-1: #3d1e22;
       --txt-not-2: #3d2a1e;
@@ -77,175 +74,216 @@
       --txt-not-6: #2f213d;
     }
 
-    /* --- RESET E LAYOUT APP FIXO --- */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--fonte); }
-    html, body { height: 100%; width: 100%; overflow: hidden; background-color: var(--bg-principal); color: var(--texto-principal); user-select: none; }
-    
-    .app-container { display: flex; flex-direction: column; height: 100vh; width: 100vw; padding: 15px; }
-    header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--borda); flex-shrink: 0; }
+    html, body { 
+      height: 100%; 
+      width: 100%; 
+      overflow: hidden; 
+      background: var(--bg-principal); 
+      color: var(--texto-principal); 
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://via.placeholder.com/1920x1080/1a1a2e/ffffff?text=Fundo+Bonito');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      max-height: 900px;
+      margin: 0 auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-principal);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (max-width: 500px) {
+      .app-wrapper {
+        padding: 0;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 10px 0;
+      border-bottom: 1px solid var(--borda);
+      flex-shrink: 0;
+    }
     h1 { font-size: 1.1rem; font-weight: 600; }
     
-    .btn-sys { background: var(--bg-card); border: 1px solid var(--borda); color: var(--texto-principal); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; }
+    .btn-sys {
+      background: var(--bg-card);
+      border: 1px solid var(--borda);
+      color: var(--texto-principal);
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
     .btn-sys:hover { background: var(--celula-percorrida); }
 
-    /* Fichário Abas */
-    .container-abas { display: flex; gap: 4px; margin-top: 12px; flex-shrink: 0; position: relative; z-index: 2; }
-    .aba { background: var(--bg-card); border: 1px solid var(--borda); border-bottom: none; color: var(--texto-secundario); padding: 8px 14px; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 0.8rem; font-weight: 500; }
-    .aba.ativa { background: var(--bg-principal); color: var(--texto-principal); border-bottom: 1px solid var(--bg-principal); font-weight: 600; }
+    .container-abas {
+      display: flex;
+      gap: 4px;
+      margin-top: 10px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .aba {
+      background: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-bottom: none;
+      color: var(--texto-secundario);
+      padding: 8px 14px;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .aba.ativa {
+      background: var(--bg-principal);
+      color: var(--texto-principal);
+      border-bottom: 1px solid var(--bg-principal);
+      font-weight: 600;
+    }
 
-    /* Corpo Central Rolável */
-    .conteudo-fichario { background: var(--bg-principal); border: 1px solid var(--borda); border-radius: 0 4px 4px 4px; padding: 12px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; }
+    .conteudo-fichario {
+      background: var(--bg-principal);
+      border: 1px solid var(--borda);
+      border-radius: 0 4px 4px 4px;
+      padding: 12px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .conteudo-fichario::-webkit-scrollbar {
+      display: none;
+    }
+
     .painel { display: none; width: 100%; }
     .painel.ativo { display: block; }
 
-    footer { text-align: center; padding: 8px 0; font-size: 0.75rem; color: var(--texto-secundario); border-top: 1px solid var(--borda); flex-shrink: 0; }
-
-    /* --- WINDOWS MODAL MÓVEL --- */
-    .modal-windows { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); z-index: 100; }
-    .window-box { background: var(--bg-principal); border: 1px solid var(--borda); box-shadow: 0 4px 20px rgba(0,0,0,0.15); width: 320px; position: absolute; border-radius: 4px; overflow: hidden; }
-    .window-header { background: var(--bg-card); color: var(--texto-principal); padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border-bottom: 1px solid var(--borda); cursor: move; }
-    .window-close { background: transparent; border: none; font-size: 1.1rem; cursor: pointer; color: var(--texto-secundario); }
-    .window-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-    .win-section { border: 1px solid var(--borda); padding: 8px; background: var(--bg-card); border-radius: 4px; }
-    .win-label { font-size: 0.75rem; font-weight: 600; margin-bottom: 4px; display: block; }
-    .win-input, .win-select { width: 100%; padding: 5px; border: 1px solid var(--borda); background: var(--bg-principal); color: var(--texto-principal); font-size: 0.8rem; margin-bottom: 6px; border-radius: 3px; }
-
-    /* --- GRID DO CALENDÁRIO COM COLUNA CONGELADA --- */
-    .controles-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    
-    .calendario-scroll-wrapper { 
-      width: 100%; 
-      overflow-x: auto; 
-      border: 1px solid var(--borda); 
-      background: var(--bg-card); 
-      padding: 5px; 
-      border-radius: 4px; 
-    }
-    
-    .calendario { 
-      display: grid; 
-      grid-template-columns: 48px 1fr; 
-      grid-template-rows: auto 1fr; 
-      grid-template-areas: 
-        "caixa-ano caixa-semanas-ano" 
-        "caixa-dias-semana diario"; 
-      width: max-content; 
-    }
-    
-    /* Ano Congelado à Esquerda */
-    .caixa-ano { 
-      grid-area: caixa-ano; 
-      position: sticky; 
-      left: 0; 
-      z-index: 10; 
-      background: var(--bg-card); /* Fundo opaco para sobrepor os quadradinhos */
-      border-bottom: 1px solid var(--borda); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      font-size: 0.75rem; 
-      font-weight: bold; 
-      border-right: 1px solid var(--borda); 
-    }
-    
-    /* Dias da Semana Congelados à Esquerda */
-    .caixa-dias-semana { 
-      grid-area: caixa-dias-semana; 
-      position: sticky; 
-      left: 0; 
-      z-index: 10; 
-      background: var(--bg-card); /* Fundo opaco */
-      display: grid; 
-      grid-template-rows: repeat(7, 16px); 
-      gap: 2px; 
-      padding-right: 4px; 
-      padding-top: 2px;
-      border-right: 1px solid var(--borda); 
+    footer {
+      text-align: center;
+      padding: 6px 0;
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      border-top: 1px solid var(--borda);
+      flex-shrink: 0;
     }
 
-    /* Quadradinhos que rolam por debaixo da coluna esquerda */
-    .caixa-semanas-ano { 
-      grid-area: caixa-semanas-ano; 
-      display: grid; 
-      grid-auto-flow: column; 
-      gap: 2px; 
-      border-bottom: 1px solid var(--borda); 
-      padding-bottom: 2px; 
-      padding-left: 4px; 
-    }
-    
-    .diario { 
-      grid-area: diario; 
-      display: grid; 
-      grid-template-rows: repeat(7, 16px); 
-      grid-auto-flow: column; 
-      gap: 2px; 
-      padding-left: 4px; 
-      padding-top: 2px;
-    }
+    /* ===== MODAL PAINEL ===== */
+    .modal-windows { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.25); z-index:100; }
+    .window-box { background:var(--bg-principal); border:1px solid var(--borda); box-shadow:0 4px 20px rgba(0,0,0,0.15); width:320px; position:absolute; border-radius:4px; overflow:hidden; }
+    .window-header { background:var(--bg-card); padding:8px 10px; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; border-bottom:1px solid var(--borda); cursor:move; }
+    .window-close { background:transparent; border:none; font-size:1.1rem; cursor:pointer; color:var(--texto-secundario); }
+    .window-body { padding:12px; display:flex; flex-direction:column; gap:10px; }
+    .win-section { border:1px solid var(--borda); padding:8px; background:var(--bg-card); border-radius:4px; }
+    .win-label { font-size:0.75rem; font-weight:600; margin-bottom:4px; display:block; }
+    .win-input, .win-select { width:100%; padding:5px; border:1px solid var(--borda); background:var(--bg-principal); color:var(--texto-principal); font-size:0.8rem; margin-bottom:6px; border-radius:3px; }
 
-    /* Estilos Visuais dos Quadradinhos e Textos */
-    .caixa-semanas-ano > div { border: 1px solid var(--borda); font-size: 0.5rem; display: flex; align-items: center; justify-content: center; height: 16px; width: 16px; background: var(--bg-principal); border-radius: 2px; }
-    .caixa-semanas-ano > div.semana-atual-marcada { background: var(--marca-atual) !important; color: var(--bg-principal) !important; font-weight: bold; }
+    /* ===== CALENDÁRIO ===== */
+    .controles-topo { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .calendario-scroll-wrapper { width:100%; overflow-x:auto; border:1px solid var(--borda); background:var(--bg-card); padding:5px; border-radius:4px; scrollbar-width:none; -ms-overflow-style:none; }
+    .calendario-scroll-wrapper::-webkit-scrollbar { display:none; }
+    .calendario { display:grid; grid-template-columns:48px 1fr; grid-template-rows:auto 1fr; grid-template-areas:"caixa-ano caixa-semanas-ano" "caixa-dias-semana diario"; width:max-content; }
+    .caixa-ano { grid-area:caixa-ano; position:sticky; left:0; z-index:10; background:var(--bg-card); border-bottom:1px solid var(--borda); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:bold; border-right:1px solid var(--borda); }
+    .caixa-dias-semana { grid-area:caixa-dias-semana; position:sticky; left:0; z-index:10; background:var(--bg-card); display:grid; grid-template-rows:repeat(7,16px); gap:2px; padding-right:4px; padding-top:2px; border-right:1px solid var(--borda); }
+    .caixa-semanas-ano { grid-area:caixa-semanas-ano; display:grid; grid-auto-flow:column; gap:2px; border-bottom:1px solid var(--borda); padding-bottom:2px; padding-left:4px; }
+    .diario { grid-area:diario; display:grid; grid-template-rows:repeat(7,16px); grid-auto-flow:column; gap:2px; padding-left:4px; padding-top:2px; }
+    .caixa-semanas-ano > div { border:1px solid var(--borda); font-size:0.5rem; display:flex; align-items:center; justify-content:center; height:16px; width:16px; background:var(--bg-principal); border-radius:2px; }
+    .caixa-semanas-ano > div.semana-atual-marcada { background:var(--marca-atual) !important; color:var(--bg-principal) !important; font-weight:bold; }
+    .caixa-dias-semana > div { border:1px solid var(--borda); font-size:0.55rem; display:flex; align-items:center; justify-content:center; background:var(--bg-principal); border-radius:2px; height:16px; width:40px; text-transform:uppercase; color:var(--texto-secundario); }
+    .caixa-dias-semana > div.dia-semana-marcado { background:var(--marca-atual) !important; color:var(--bg-principal) !important; font-weight:bold; border-color:var(--marca-atual); }
+    .celula-dia { width:16px; height:16px; background-color:var(--celula-vazia); border:1px solid rgba(0,0,0,0.02); display:flex; align-items:center; justify-content:center; font-size:0.55rem; border-radius:2px; }
+    .celula-dia.morto { opacity:0.08; background-color:transparent; border:none; }
+    .celula-dia.percorrido { background-color:var(--celula-percorrida); }
+    .celula-dia.marca-dia-atual { border:2px solid var(--marca-atual) !important; }
+    .celula-dia.p-25 { background-color:var(--p-25) !important; }
+    .celula-dia.p-50 { background-color:var(--p-50) !important; }
+    .celula-dia.p-75 { background-color:var(--p-75) !important; }
+    .celula-dia.p-100 { background-color:var(--p-100) !important; color:white !important; font-weight:bold; }
 
-    .caixa-dias-semana > div { border: 1px solid var(--borda); font-size: 0.55rem; display: flex; align-items: center; justify-content: center; background: var(--bg-principal); border-radius: 2px; height: 16px; width: 40px; text-transform: uppercase; color: var(--texto-secundario); }
-    .caixa-dias-semana > div.dia-semana-marcado { background: var(--marca-atual) !important; color: var(--bg-principal) !important; font-weight: bold; border-color: var(--marca-atual); }
-    
-    .celula-dia { width: 16px; height: 16px; background-color: var(--celula-vazia); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; font-size: 0.55rem; border-radius: 2px; }
-    .celula-dia.morto { opacity: 0.08; background-color: transparent; border: none; }
-    .celula-dia.percorrido { background-color: var(--celula-percorrida); }
-    .celula-dia.marca-dia-atual { border: 2px solid var(--marca-atual) !important; }
-    
-    .celula-dia.p-25 { background-color: var(--p-25) !important; }
-    .celula-dia.p-50 { background-color: var(--p-50) !important; }
-    .celula-dia.p-75 { background-color: var(--p-75) !important; }
-    .celula-dia.p-100 { background-color: var(--p-100) !important; color: white !important; font-weight: bold; }
+    /* ===== CARDS DISCIPLINAS ===== */
+    .grid-disciplinas { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; margin-top:8px; }
+    .card-disciplina { background:var(--bg-card); border:1px solid var(--borda); padding:10px; border-radius:4px; display:flex; justify-content:space-between; align-items:center; }
+    .info-disciplina h3 { font-size:0.85rem; font-weight:600; display:flex; align-items:center; gap:6px; }
+    .info-disciplina p { font-size:0.7rem; color:var(--texto-secundario); margin-top:2px; }
+    .btn-joinha { background:transparent; border:1px solid var(--borda); border-radius:50%; width:32px; height:32px; cursor:pointer; color:var(--texto-secundario); display:flex; align-items:center; justify-content:center; }
+    .btn-joinha.checked { background:var(--p-75); color:white; border-color:var(--p-75); }
 
-    /* --- CARDS DISCIPLINAS --- */
-    .grid-disciplinas { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
-    .card-disciplina { background: var(--bg-card); border: 1px solid var(--borda); padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
-    .info-disciplina h3 { font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-    .info-disciplina p { font-size: 0.7rem; color: var(--texto-secundario); margin-top: 2px; }
-    .btn-joinha { background: transparent; border: 1px solid var(--borda); border-radius: 50%; width: 32px; height: 32px; cursor: pointer; color: var(--texto-secundario); display: flex; align-items: center; justify-content: center; }
-    .btn-joinha.checked { background: var(--p-75); color: white; border-color: var(--p-75); }
+    /* ===== GRADE HORÁRIA ===== */
+    .agenda-pagina { border:1px solid var(--borda); border-radius:4px; background:var(--bg-principal); }
+    .agenda-dia-bloco { border-bottom:1px solid var(--borda); }
+    .agenda-dia-titulo { background:var(--bg-card); padding:6px 10px; font-size:0.75rem; font-weight:600; border-bottom:1px solid var(--borda); display:flex; justify-content:space-between; align-items:center; }
+    .agenda-horarios-container { padding:8px; display:flex; flex-direction:column; gap:6px; }
+    .agenda-linha-horario { display:flex; align-items:center; gap:10px; }
+    .agenda-hora-label { width:65px; font-size:0.7rem; font-weight:600; color:var(--texto-secundario); }
+    .agenda-disciplina-valor { flex:1; padding:4px 8px; background:var(--bg-card); font-size:0.8rem; border-radius:3px; }
+    .agenda-disciplina-valor.vazio { font-style:italic; opacity:0.4; }
+    .seletor-disciplina { flex:1; padding:3px; font-size:0.8rem; background:var(--bg-principal); color:var(--texto-principal); border:1px solid var(--borda); border-radius:3px; }
+    .btn-sub-action { background:transparent; border:none; cursor:pointer; font-size:0.75rem; color:#e11d48; padding:2px 4px; }
+    .btn-sub-action.add { color:#2563eb; }
 
-    /* --- AGENDA --- */
-    .agenda-pagina { border: 1px solid var(--borda); border-radius: 4px; background: var(--bg-principal); }
-    .agenda-dia-bloco { border-bottom: 1px solid var(--borda); }
-    .agenda-dia-titulo { background: var(--bg-card); padding: 6px 10px; font-size: 0.75rem; font-weight: 600; border-bottom: 1px solid var(--borda); display: flex; justify-content: space-between; align-items: center; }
-    .agenda-horarios-container { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
-    .agenda-linha-horario { display: flex; align-items: center; gap: 10px; }
-    .agenda-hora-label { width: 65px; font-size: 0.7rem; font-weight: 600; color: var(--texto-secundario); }
-    .agenda-disciplina-valor { flex: 1; padding: 4px 8px; background: var(--bg-card); font-size: 0.8rem; border-radius: 3px; }
-    .agenda-disciplina-valor.vazio { font-style: italic; opacity: 0.4; }
-    .seletor-disciplina { flex: 1; padding: 3px; font-size: 0.8rem; background: var(--bg-principal); color: var(--texto-principal); border: 1px solid var(--borda); border-radius: 3px; }
-    .btn-sub-action { background: transparent; border: none; cursor: pointer; font-size: 0.75rem; color: #e11d48; padding: 2px 4px; }
-    .btn-sub-action.add { color: #2563eb; }
-
-    /* ===== NOVOS ESTILOS DA GUIA PRODUTIVIDADE ===== */
+    /* ===== GUIA PRODUTIVIDADE ===== */
     .bloco-estatisticas {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     .card-estatistica {
       background: var(--bg-card);
       border: 1px solid var(--borda);
-      padding: 12px 8px;
+      padding: 12px 6px;
       text-align: center;
       border-radius: 4px;
       cursor: pointer;
       transition: background 0.15s;
     }
-    .card-estatistica:hover {
-      background: var(--celula-percorrida);
-    }
+    .card-estatistica:hover { background: var(--celula-percorrida); }
     .card-estatistica .rotulo {
-      font-size: 0.65rem;
-      color: var(--texto-secundario);
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.3px;
+      color: var(--texto-secundario);
       display: block;
       margin-bottom: 2px;
     }
@@ -255,26 +293,25 @@
       display: block;
     }
     .card-estatistica .detalhe {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: var(--texto-secundario);
       margin-top: 2px;
     }
 
-    /* Cartão Ofensiva (Hero) - ocupa 100% largura */
     .card-ofensiva {
       background: var(--bg-card);
       border: 1px solid var(--borda);
       border-radius: 4px;
       padding: 12px 16px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 15px;
       flex-wrap: wrap;
     }
     .card-ofensiva .imagem-streak {
-      flex: 0 0 80px;
-      height: 80px;
+      flex: 0 0 70px;
+      height: 70px;
       background: var(--bg-principal);
       border-radius: 4px;
       display: flex;
@@ -293,21 +330,20 @@
       flex: 1;
     }
     .card-ofensiva .info-streak .rotulo {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--texto-secundario);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     .card-ofensiva .info-streak .valor {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
     }
     .card-ofensiva .info-streak .sub {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--texto-secundario);
     }
 
-    /* Modal de Ranking Semanal */
     .modal-ranking {
       display: none;
       position: fixed;
@@ -317,9 +353,7 @@
       align-items: center;
       justify-content: center;
     }
-    .modal-ranking.aberto {
-      display: flex;
-    }
+    .modal-ranking.aberto { display: flex; }
     .modal-ranking .box-ranking {
       background: var(--bg-principal);
       border: 1px solid var(--borda);
@@ -368,101 +402,340 @@
       transition: width 0.3s;
     }
 
-    /* Cronômetro */
+    /* ===== BLOCO DE NOTAS (com editor contenteditable) ===== */
+    .container-blocos-notas {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--borda);
+      border-radius: 4px;
+      margin-bottom: 12px;
+      padding: 8px;
+      transition: all 0.25s ease;
+      position: relative;
+      background: var(--aba-not-0);
+    }
+    .container-blocos-notas.expandido {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      border-radius: 0;
+      margin: 0;
+      padding: 8px;
+      background: var(--bg-principal);
+      border: 1px solid var(--borda);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .container-blocos-notas.expandido .editor-notas {
+      height: 100% !important;
+      min-height: 200px;
+    }
+    .container-blocos-notas .expandido-fechar {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--texto-secundario);
+      cursor: pointer;
+      z-index: 60;
+    }
+    .container-blocos-notas.expandido .expandido-fechar {
+      display: block;
+    }
+    .container-blocos-notas .expandido-esc {
+      display: none;
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      color: var(--texto-secundario);
+      opacity: 0.6;
+      z-index: 60;
+      background: var(--bg-card);
+      padding: 2px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--borda);
+    }
+    .container-blocos-notas.expandido .expandido-esc {
+      display: block;
+    }
+
+    .abas-arcoiris-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: -1px;
+      padding-bottom: 1px;
+    }
+    .abas-arcoiris {
+      display: flex;
+      gap: 2px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex: 1;
+      padding: 0 20px;
+    }
+    .abas-arcoiris::-webkit-scrollbar { display: none; }
+    .seta-aba {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--borda);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      cursor: pointer;
+      color: var(--texto-secundario);
+      z-index: 5;
+      background: var(--bg-principal);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      transition: opacity 0.2s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .seta-aba.visivel {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .seta-aba.esquerda { left: 0; }
+    .seta-aba.direita { right: 0; }
+
+    .aba-not {
+      border: 1px solid var(--borda);
+      border-bottom: none;
+      padding: 4px 8px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .aba-not input {
+      border: none;
+      background: transparent;
+      font-size: 0.7rem;
+      font-weight: 500;
+      width: 50px;
+      color: inherit;
+      pointer-events: none;
+      text-align: center;
+    }
+    .aba-not input:focus {
+      outline: none;
+      border-bottom: 1px dashed var(--texto-principal);
+    }
+    .aba-not.ativa {
+      font-weight: bold;
+      border-bottom: 1px solid transparent !important;
+      z-index: 2;
+    }
+
+    .barra-formatacao {
+      border: 1px solid var(--borda);
+      border-bottom: none;
+      background: var(--bg-card);
+      padding: 4px 8px;
+      display: flex;
+      gap: 6px;
+      border-radius: 0;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn-format {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--texto-secundario);
+      padding: 2px 4px;
+      font-size: 0.8rem;
+      border-radius: 3px;
+    }
+    .btn-format:hover { background: var(--celula-vazia); }
+    .btn-format.ativo { color: var(--texto-principal); background: var(--celula-vazia); }
+
+    .editor-notas {
+      width: 100%;
+      min-height: 120px;
+      padding: 8px;
+      font-size: 0.85rem;
+      border: 1px solid var(--borda);
+      border-radius: 0 0 4px 4px;
+      outline: none;
+      background: var(--txt-not-0);
+      color: var(--texto-principal);
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+    [data-theme="dark"] .editor-notas {
+      color: #e2e8f0;
+    }
+    .editor-notas:focus {
+      border-color: var(--marca-atual);
+    }
+
+    /* ===== CRONÔMETRO ===== */
     .cronometro-container {
       border: 1px solid var(--borda);
-      background: var(--bg-card);
-      padding: 15px;
       border-radius: 4px;
-      margin-top: 15px;
+      padding: 15px;
+      margin-top: 12px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-card);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+    }
+    .cronometro-container .crono-overlay {
+      background: rgba(0,0,0,0.25);
+      border-radius: 4px;
+      padding: 12px;
+      width: 100%;
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
     .cronometro-container .display-tempo {
       font-size: 2.2rem;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
       letter-spacing: 2px;
-      margin: 8px 0;
+      cursor: pointer;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.3);
+      padding: 0 16px;
+      border-radius: 8px;
+      display: inline-block;
     }
-    .cronometro-container .imagem-cenario {
-      width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin: 10px 0;
-      border: 1px solid var(--borda);
-      background: var(--bg-principal);
+    .cronometro-container .display-tempo input {
+      background: transparent;
+      border: none;
+      font-size: 2.2rem;
+      font-weight: 700;
+      width: 80px;
+      text-align: center;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      outline: none;
+    }
+    .cronometro-container .display-tempo input:focus {
+      border-bottom: 2px solid white;
     }
     .cronometro-container .controles-crono {
       display: flex;
-      gap: 10px;
-      justify-content: center;
+      gap: 8px;
       flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 4px;
     }
     .cronometro-container .btn-crono {
-      background: var(--bg-principal);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--borda);
-      padding: 6px 18px;
+      padding: 4px 14px;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--texto-principal);
     }
     .cronometro-container .btn-crono:hover {
-      background: var(--celula-percorrida);
+      background: white;
     }
     .cronometro-container .btn-crono.ativo {
       background: var(--p-75);
       color: white;
       border-color: var(--p-75);
     }
-
-    .container-blocos-notas {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--borda);
-      border-radius: 4px;
-      margin-bottom: 15px;
-      padding: 10px;
-      transition: background 0.2s;
+    .cronometro-container .crono-legenda {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.8);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
-    .abas-arcoiris { display: flex; gap: 2px; overflow-x: auto; margin-bottom: -1px; padding-bottom: 1px; }
-    .aba-not { border: 1px solid var(--borda); border-bottom: none; padding: 6px 10px; font-size: 0.75rem; font-weight: 500; cursor: pointer; border-radius: 4px 4px 0 0; display: flex; align-items: center; gap: 4px; }
-    .aba-not input { border: none; background: transparent; font-size: 0.75rem; font-weight: 500; width: 60px; color: inherit; pointer-events: none; text-align: center; }
-    .aba-not input:focus { outline: none; border-bottom: 1px dashed var(--texto-principal); }
-    .aba-not.ativa { font-weight: bold; border-bottom: 1px solid transparent !important; z-index: 2; }
-    .barra-formatacao { border: 1px solid var(--borda); border-bottom: none; background: var(--bg-card); padding: 4px 8px; display: flex; gap: 8px; border-radius: 0; font-size: 0.8rem; }
-    .btn-format { background: transparent; border: none; cursor: pointer; color: var(--texto-secundario); padding: 2px 4px; }
-    .btn-format:hover { color: var(--texto-principal); }
-    .textarea-notas { width: 100%; height: 120px; padding: 8px; font-size: 0.85rem; border: 1px solid var(--borda); border-radius: 0 0 4px 4px; resize: none; outline: none; transition: background 0.2s; }
+
+    /* ===== RESPONSIVO ===== */
+    @media (min-width: 600px) {
+      .app-wrapper {
+        margin: 20px auto;
+        border-radius: 16px;
+        box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+      }
+      body::before {
+        opacity: 0.3;
+      }
+    }
+    @media (max-width: 500px) {
+      .app-wrapper {
+        padding: 0;
+        border-radius: 0;
+        max-height: 100vh;
+        box-shadow: none;
+      }
+      .conteudo-fichario {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
+      .container-abas {
+        padding: 0 4px;
+      }
+      .aba {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+      }
+    }
   </style>
 </head>
-<body class="tema-claro">
+<body>
 
+<div class="app-wrapper">
   <div class="app-container">
+
+    <!-- HEADER -->
     <header>
       <h1>BM :: Roadmap</h1>
       <button class="btn-sys" onclick="abrirModal()"><i class="fa-solid fa-sliders"></i> Painel</button>
     </header>
 
-    <!-- WINDOWS MODAL -->
+    <!-- MODAL PAINEL -->
     <div class="modal-windows" id="winModal" onclick="fecharModalFora(event)">
       <div class="window-box" id="windowBox">
         <div class="window-header" id="windowHeader">
-          <div><i class="fa-solid fa-gear"></i> Painel de Configurações</div>
+          <div><i class="fa-solid fa-gear"></i> Configurações</div>
           <button class="window-close" onclick="fecharModal()">&times;</button>
         </div>
         <div class="window-body">
           <div class="win-section">
             <label class="win-label">Interface</label>
-            <button class="btn-sys" style="display:inline-block; margin-right:4px;" onclick="mudarTema('light')">Claro</button>
+            <button class="btn-sys" style="display:inline-block;margin-right:4px;" onclick="mudarTema('light')">Claro</button>
             <button class="btn-sys" style="display:inline-block;" onclick="mudarTema('dark')">Escuro</button>
           </div>
           <div class="win-section">
             <label class="win-label">Nova Disciplina</label>
             <input type="text" id="inputNovaDisc" class="win-input" placeholder="Nome...">
-            
-            <label class="win-label">Grupo Temático</label>
+            <label class="win-label">Grupo</label>
             <select id="selectGrupo" class="win-select">
               <option value="humanas">Humanas (📚)</option>
               <option value="exatas">Exatas (📐)</option>
@@ -477,23 +750,22 @@
       </div>
     </div>
 
-    <!-- GUIAS DO FICHÁRIO -->
+    <!-- ABAS PRINCIPAIS -->
     <div class="container-abas">
       <div class="aba ativa" onclick="alternarAba(0)">Registro Semanal</div>
       <div class="aba" onclick="alternarAba(1)">Grade Horária</div>
       <div class="aba" onclick="alternarAba(2)">Produtividade</div>
     </div>
 
-    <!-- ÁREA CENTRAL -->
+    <!-- CONTEÚDO CENTRAL -->
     <div class="conteudo-fichario">
-      
-      <!-- GUIA 1: REGISTRO (inalterada) -->
+
+      <!-- PAINEL 1: REGISTRO -->
       <div id="painel-registros" class="painel ativo">
         <div class="controles-topo">
-          <span style="font-size:0.75rem; font-weight:600; color:var(--texto-secundario);">Histórico Anual</span>
-          <select id="seletorAno" class="win-select" style="width:80px; margin:0;" onchange="mudarAno(this.value)"></select>
+          <span style="font-size:0.75rem;font-weight:600;color:var(--texto-secundario);">Histórico Anual</span>
+          <select id="seletorAno" class="win-select" style="width:80px;margin:0;" onchange="mudarAno(this.value)"></select>
         </div>
-
         <div class="calendario-scroll-wrapper" id="calendarioScroll">
           <div class="calendario">
             <div id="caixa-ano" class="caixa-ano">2026</div>
@@ -506,927 +778,905 @@
             <div id="diario" class="diario"></div>
           </div>
         </div>
-
-        <h2 style="font-size: 0.85rem; margin-top: 15px; font-weight: 600;">Fichas de Estudos para Hoje</h2>
+        <h2 style="font-size:0.85rem;margin-top:15px;font-weight:600;">Fichas de Estudos para Hoje</h2>
         <div class="grid-disciplinas" id="listaDisciplinas"></div>
       </div>
 
-      <!-- GUIA 2: GRADE HORÁRIA (inalterada) -->
+      <!-- PAINEL 2: GRADE -->
       <div id="painel-grade" class="painel">
         <div class="controles-topo">
-          <span id="status-modo" style="font-size: 0.75rem; color: var(--texto-secundario);">Modo: Leitura</span>
+          <span id="status-modo" style="font-size:0.75rem;color:var(--texto-secundario);">Modo: Leitura</span>
           <button class="btn-sys" id="btnEditarGrade" onclick="alternarModoEdicao()">Editar Agenda</button>
         </div>
         <div class="agenda-pagina" id="agendaPagina"></div>
       </div>
 
-      <!-- ===== GUIA 3: PRODUTIVIDADE (NOVA VERSÃO) ===== -->
-      <div id="painel-produtividade" class="painel">
-         
-         <!-- CARD OFENSIVA (HERO) 100% -->
-         <div class="card-ofensiva" id="cardStreak">
-           <div class="imagem-streak" id="imagemStreak">
-             <!-- Placeholder: será preenchido com <img> ou emoji -->
-           </div>
-           <div class="info-streak">
-             <div class="rotulo">🔥 Ofensiva</div>
-             <div class="valor" id="streakValor">0 dias</div>
-             <div class="sub" id="streakSub">Mantenha o ritmo!</div>
-           </div>
-         </div>
+      <!-- PAINEL 3: PRODUTIVIDADE -->
+      <div id="painel-produtividade" class="painel" style="position:relative;">
 
-         <!-- GRID 2x2 -->
-         <div class="bloco-estatisticas">
-           <div class="card-estatistica" id="cardTotal">
-             <span class="rotulo">⭐ Total Feito</span>
-             <span class="valor" id="statTotal">0</span>
-           </div>
-           <div class="card-estatistica" id="cardEquilibrio" onclick="abrirModalRanking()">
-             <span class="rotulo">⚖️ Equilíbrio</span>
-             <span class="valor" id="statEquilibrio">0%</span>
-             <span class="detalhe">Clique para ver ranking</span>
-           </div>
-           <div class="card-estatistica" id="cardAproveitamento">
-             <span class="rotulo">🎯 Aproveitamento Hoje</span>
-             <span class="valor" id="statAproveitamento">0%</span>
-           </div>
-           <div class="card-estatistica" id="cardFoco">
-             <span class="rotulo">⏱️ Foco</span>
-             <span class="valor" id="statFoco">--</span>
-           </div>
-         </div>
+        <!-- Ofensiva -->
+        <div class="card-ofensiva" id="cardStreak">
+          <div class="imagem-streak" id="imagemStreak"></div>
+          <div class="info-streak">
+            <div class="rotulo">🔥 Ofensiva</div>
+            <div class="valor" id="streakValor">0 dias</div>
+            <div class="sub" id="streakSub">Comece hoje!</div>
+          </div>
+        </div>
 
-         <!-- BLOCO DE NOTAS (inalterado) -->
-         <div class="container-blocos-notas" id="fundoFicharioNotas">
+        <!-- Grid 2x2 -->
+        <div class="bloco-estatisticas">
+          <div class="card-estatistica" id="cardTotal">
+            <span class="rotulo">⭐ Total Feito</span>
+            <span class="valor" id="statTotal">0</span>
+          </div>
+          <div class="card-estatistica" id="cardEquilibrio" onclick="abrirModalRanking()">
+            <span class="rotulo">⚖️ Equilíbrio</span>
+            <span class="valor" id="statEquilibrio">0%</span>
+            <span class="detalhe">Clique para ver ranking</span>
+          </div>
+          <div class="card-estatistica" id="cardAproveitamento">
+            <span class="rotulo">🎯 Aproveitamento Hoje</span>
+            <span class="valor" id="statAproveitamento">0%</span>
+          </div>
+          <div class="card-estatistica" id="cardFoco">
+            <span class="rotulo">⏱️ Foco</span>
+            <span class="valor" id="statFoco">--</span>
+          </div>
+        </div>
+
+        <!-- BLOCO DE NOTAS (com editor contenteditable) -->
+        <div class="container-blocos-notas" id="fundoFicharioNotas">
+          <button class="expandido-fechar" onclick="fecharExpandido()">✕</button>
+          <div class="expandido-esc">Pressione ESC ou clique no ✕ para sair</div>
+
+          <div class="abas-arcoiris-wrapper">
+            <div class="seta-aba esquerda" id="setaEsq" onclick="rolarAbas(-1)">◀</div>
             <div class="abas-arcoiris" id="abasArcoIrisContainer"></div>
-            <div class="barra-formatacao">
-              <button class="btn-format" onclick="formatarTexto('B')" title="Negrito"><i class="fa-solid fa-bold"></i></button>
-              <button class="btn-format" onclick="formatarTexto('I')" title="Itálico"><i class="fa-solid fa-italic"></i></button>
-              <button class="btn-format" onclick="formatarTexto('L')" title="Lista"><i class="fa-solid fa-list"></i></button>
-              <span style="font-size:0.7rem; color:var(--texto-secundario); margin-left:auto; align-self:center;">Dois cliques para renomear</span>
+            <div class="seta-aba direita" id="setaDir" onclick="rolarAbas(1)">▶</div>
+          </div>
+
+          <div class="barra-formatacao">
+            <button class="btn-format" onclick="execCmd('bold')" title="Negrito"><b>B</b></button>
+            <button class="btn-format" onclick="execCmd('italic')" title="Itálico"><i>I</i></button>
+            <button class="btn-format" onclick="execCmd('underline')" title="Sublinhado"><u>U</u></button>
+            <button class="btn-format" onclick="execCmd('strikeThrough')" title="Riscado"><s>S</s></button>
+            <button class="btn-format" onclick="execCmd('backColor','#fef08a')" title="Marcador amarelo" style="background:#fef08a;">A</button>
+            <button class="btn-format" onclick="execCmd('backColor','#93c5fd')" title="Marcador azul" style="background:#93c5fd;">A</button>
+            <button class="btn-format" onclick="execCmd('backColor','#86efac')" title="Marcador verde" style="background:#86efac;">A</button>
+            <button class="btn-format" onclick="execCmd('backColor','#fca5a5')" title="Marcador vermelho" style="background:#fca5a5;">A</button>
+            <span style="font-size:0.65rem;color:var(--texto-secundario);margin-left:auto;">Duplo clique p/ renomear</span>
+          </div>
+
+          <div id="editorNotas" class="editor-notas" contenteditable="true" 
+               onfocus="expandirBloco()" oninput="salvarTextoGuiaAtual()"
+               placeholder="Rascunhe seus lembretes..."></div>
+        </div>
+
+        <!-- CRONÔMETRO -->
+        <div class="cronometro-container" id="cronometroContainer">
+          <div class="crono-overlay">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);" id="combinacaoNome">Cenário: Nascer do Sol</div>
+            <div class="display-tempo" id="displayTempo" onclick="editarTempoCrono()">
+              <span id="cronoTexto">25:00</span>
             </div>
-            <textarea id="editorTextoNotas" class="textarea-notas" oninput="salvarTextoGuiaAtual()" placeholder="Rascunhe seus lembretes aqui..."></textarea>
-         </div>
+            <div class="controles-crono">
+              <button class="btn-crono" id="btnIniciarCrono" onclick="iniciarCronometro()"><i class="fa-solid fa-play"></i> Iniciar</button>
+              <button class="btn-crono" onclick="pausarCronometro()"><i class="fa-solid fa-pause"></i> Pausar</button>
+              <button class="btn-crono" onclick="reiniciarCronometro()"><i class="fa-solid fa-rotate"></i> Reiniciar</button>
+            </div>
+            <div class="crono-legenda">clique no tempo para editar</div>
+          </div>
+        </div>
 
-         <!-- CRONÔMETRO + CENÁRIOS -->
-         <div class="cronometro-container">
-           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
-             <span style="font-size:0.75rem; font-weight:600; color:var(--texto-secundario);">⏳ Pomodoro</span>
-             <span style="font-size:0.7rem; color:var(--texto-secundario);" id="combinacaoNome">Cenário: Nascer do Sol</span>
-           </div>
-           <img id="imagemCronometro" class="imagem-cenario" src="" alt="Cenário" style="display:none;">
-           <div class="display-tempo" id="displayTempo">25:00</div>
-           <div class="controles-crono">
-             <button class="btn-crono" id="btnIniciarCrono" onclick="iniciarCronometro()"><i class="fa-solid fa-play"></i> Iniciar</button>
-             <button class="btn-crono" onclick="pausarCronometro()"><i class="fa-solid fa-pause"></i> Pausar</button>
-             <button class="btn-crono" onclick="reiniciarCronometro()"><i class="fa-solid fa-rotate"></i> Reiniciar</button>
-           </div>
-         </div>
-
-      </div>
-    </div>
+      </div> <!-- fim painel-produtividade -->
+    </div> <!-- fim conteudo-fichario -->
 
     <footer>
       &copy; Bruno Moraes 2026 &nbsp;|&nbsp; AGPL-3.0 license
     </footer>
   </div>
+</div>
 
-  <!-- MODAL RANKING SEMANAL -->
-  <div class="modal-ranking" id="modalRanking">
-    <div class="box-ranking">
-      <h3>
-        <span>📊 Ranking Semanal</span>
-        <button class="fechar-modal" onclick="fecharModalRanking()">&times;</button>
-      </h3>
-      <div id="conteudoRanking"></div>
-    </div>
+<!-- MODAL RANKING -->
+<div class="modal-ranking" id="modalRanking">
+  <div class="box-ranking">
+    <h3>
+      <span>📊 Ranking Semanal</span>
+      <button class="fechar-modal" onclick="fecharModalRanking()">&times;</button>
+    </h3>
+    <div id="conteudoRanking"></div>
   </div>
+</div>
 
-  <script>
-    // --- CONFIGURAÇÕES DE IMAGENS (FÁCIL DE EDITAR) ---
+<script>
+// ============================================================
+// CONFIGURAÇÕES DE IMAGENS (substitua pelos seus caminhos)
+// ============================================================
 
-    // Ofensiva: 7 níveis (0 a 6) e cada nível tem 3 imagens (URLs)
-    // Para níveis >=7, será sorteada uma das 21 imagens.
-    // Substitua os placeholders pelos caminhos reais das suas imagens.
-    const STREAK_IMAGES = [
-      // Nível 0 (streak = 0) - 3 opções
-      [
-        'https://via.placeholder.com/80/ff6b6b/ffffff?text=0A',
-        'https://via.placeholder.com/80/ff6b6b/ffffff?text=0B',
-        'https://via.placeholder.com/80/ff6b6b/ffffff?text=0C'
-      ],
-      // Nível 1
-      [
-        'https://via.placeholder.com/80/ffa94d/ffffff?text=1A',
-        'https://via.placeholder.com/80/ffa94d/ffffff?text=1B',
-        'https://via.placeholder.com/80/ffa94d/ffffff?text=1C'
-      ],
-      // Nível 2
-      [
-        'https://via.placeholder.com/80/fcc419/ffffff?text=2A',
-        'https://via.placeholder.com/80/fcc419/ffffff?text=2B',
-        'https://via.placeholder.com/80/fcc419/ffffff?text=2C'
-      ],
-      // Nível 3
-      [
-        'https://via.placeholder.com/80/69db7c/ffffff?text=3A',
-        'https://via.placeholder.com/80/69db7c/ffffff?text=3B',
-        'https://via.placeholder.com/80/69db7c/ffffff?text=3C'
-      ],
-      // Nível 4
-      [
-        'https://via.placeholder.com/80/4dabf7/ffffff?text=4A',
-        'https://via.placeholder.com/80/4dabf7/ffffff?text=4B',
-        'https://via.placeholder.com/80/4dabf7/ffffff?text=4C'
-      ],
-      // Nível 5
-      [
-        'https://via.placeholder.com/80/9775fa/ffffff?text=5A',
-        'https://via.placeholder.com/80/9775fa/ffffff?text=5B',
-        'https://via.placeholder.com/80/9775fa/ffffff?text=5C'
-      ],
-      // Nível 6
-      [
-        'https://via.placeholder.com/80/f783ac/ffffff?text=6A',
-        'https://via.placeholder.com/80/f783ac/ffffff?text=6B',
-        'https://via.placeholder.com/80/f783ac/ffffff?text=6C'
-      ]
-    ];
+const STREAK_IMAGES = [
+  [
+    'https://via.placeholder.com/80/ff6b6b/ffffff?text=0A',
+    'https://via.placeholder.com/80/ff6b6b/ffffff?text=0B',
+    'https://via.placeholder.com/80/ff6b6b/ffffff?text=0C'
+  ],
+  [
+    'https://via.placeholder.com/80/ffa94d/ffffff?text=1A',
+    'https://via.placeholder.com/80/ffa94d/ffffff?text=1B',
+    'https://via.placeholder.com/80/ffa94d/ffffff?text=1C'
+  ],
+  [
+    'https://via.placeholder.com/80/fcc419/ffffff?text=2A',
+    'https://via.placeholder.com/80/fcc419/ffffff?text=2B',
+    'https://via.placeholder.com/80/fcc419/ffffff?text=2C'
+  ],
+  [
+    'https://via.placeholder.com/80/69db7c/ffffff?text=3A',
+    'https://via.placeholder.com/80/69db7c/ffffff?text=3B',
+    'https://via.placeholder.com/80/69db7c/ffffff?text=3C'
+  ],
+  [
+    'https://via.placeholder.com/80/4dabf7/ffffff?text=4A',
+    'https://via.placeholder.com/80/4dabf7/ffffff?text=4B',
+    'https://via.placeholder.com/80/4dabf7/ffffff?text=4C'
+  ],
+  [
+    'https://via.placeholder.com/80/9775fa/ffffff?text=5A',
+    'https://via.placeholder.com/80/9775fa/ffffff?text=5B',
+    'https://via.placeholder.com/80/9775fa/ffffff?text=5C'
+  ],
+  [
+    'https://via.placeholder.com/80/f783ac/ffffff?text=6A',
+    'https://via.placeholder.com/80/f783ac/ffffff?text=6B',
+    'https://via.placeholder.com/80/f783ac/ffffff?text=6C'
+  ]
+];
 
-    // Combinações para o cronômetro: cada combinação tem um nome e uma lista de URLs (pelo menos 2)
-    // A imagem muda conforme o progresso do tempo (0% = primeira, 100% = última)
-    const CRONOMETRO_COMBINACOES = [
-      {
-        nome: 'Nascer do Sol',
-        imagens: [
-          'https://via.placeholder.com/400x150/ffd43b/ffffff?text=Alvorada',
-          'https://via.placeholder.com/400x150/fcc419/ffffff?text=Nascer',
-          'https://via.placeholder.com/400x150/ff922b/ffffff?text=Meio-dia',
-          'https://via.placeholder.com/400x150/e67700/ffffff?text=Pôr-do-sol',
-          'https://via.placeholder.com/400x150/1c1c1c/ffffff?text=Noite'
-        ]
-      },
-      {
-        nome: 'Plantinha Crescendo',
-        imagens: [
-          'https://via.placeholder.com/400x150/94d82d/ffffff?text=Semente',
-          'https://via.placeholder.com/400x150/69db7c/ffffff?text=Broto',
-          'https://via.placeholder.com/400x150/51cf66/ffffff?text=Planta',
-          'https://via.placeholder.com/400x150/37b24d/ffffff?text=Florescendo',
-          'https://via.placeholder.com/400x150/2b8a3e/ffffff?text=Fruto'
-        ]
-      },
-      {
-        nome: 'Céu Estrelado',
-        imagens: [
-          'https://via.placeholder.com/400x150/3d3d6b/ffffff?text=Crepúsculo',
-          'https://via.placeholder.com/400x150/1e1e3f/ffffff?text=Estrelas',
-          'https://via.placeholder.com/400x150/0b0b1a/ffffff?text=Lua+Cheia'
-        ]
+const CRONOMETRO_COMBINACOES = [
+  {
+    nome: 'Nascer do Sol',
+    imagens: [
+      'https://via.placeholder.com/400x200/ffd43b/ffffff?text=Alvorada',
+      'https://via.placeholder.com/400x200/fcc419/ffffff?text=Nascer',
+      'https://via.placeholder.com/400x200/ff922b/ffffff?text=Meio-dia',
+      'https://via.placeholder.com/400x200/e67700/ffffff?text=Pôr-do-sol',
+      'https://via.placeholder.com/400x200/1c1c1c/ffffff?text=Noite'
+    ]
+  },
+  {
+    nome: 'Plantinha Crescendo',
+    imagens: [
+      'https://via.placeholder.com/400x200/94d82d/ffffff?text=Semente',
+      'https://via.placeholder.com/400x200/69db7c/ffffff?text=Broto',
+      'https://via.placeholder.com/400x200/51cf66/ffffff?text=Planta',
+      'https://via.placeholder.com/400x200/37b24d/ffffff?text=Florescendo',
+      'https://via.placeholder.com/400x200/2b8a3e/ffffff?text=Fruto'
+    ]
+  },
+  {
+    nome: 'Céu Estrelado',
+    imagens: [
+      'https://via.placeholder.com/400x200/3d3d6b/ffffff?text=Crepúsculo',
+      'https://via.placeholder.com/400x200/1e1e3f/ffffff?text=Estrelas',
+      'https://via.placeholder.com/400x200/0b0b1a/ffffff?text=Lua+Cheia'
+    ]
+  }
+];
+
+// ============================================================
+// DADOS PRINCIPAIS
+// ============================================================
+let dados = JSON.parse(localStorage.getItem('dadosBM_V6')) || {
+  disciplinas: [],
+  gradeAgenda: { 0: [""], 1: [""], 2: [""], 3: [""], 4: [""], 5: [""], 6: [""] },
+  historicoConclusoes: {},
+  configNotas: [
+    { titulo: "Geral", texto: "" },
+    { titulo: "Aba 2", texto: "" },
+    { titulo: "Aba 3", texto: "" },
+    { titulo: "Aba 4", texto: "" },
+    { titulo: "Aba 5", texto: "" },
+    { titulo: "Aba 6", texto: "" },
+    { titulo: "Aba 7", texto: "" }
+  ],
+  combinacaoCronometroDia: null,
+  dataCombCrono: null
+};
+
+const diasSemanaNomes = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+let modoEdicaoGrade = false;
+let indexAbaNotaAtiva = 0;
+let anoAtual = new Date().getFullYear();
+const hojeReal = new Date();
+
+let cronoInterval = null;
+let cronoRestante = 25 * 60;
+let cronoTotal = 25 * 60;
+let cronoRodando = false;
+let combinacaoAtual = null;
+
+// ============================================================
+// INICIALIZAÇÃO
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarAnos();
+  reconstruirCalendario();
+  renderizarDisciplinasDoDia();
+  renderizarAgenda();
+  renderizarAbasArcoIris();
+  fazerModalArrastavel();
+  focarScrollNoDiaAtual();
+  atualizarProdutividade();
+  inicializarCronometro();
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharExpandido();
+  });
+  atualizarSetasAbas();
+  // Restaura o conteúdo do editor
+  const editor = document.getElementById('editorNotas');
+  editor.innerHTML = dados.configNotas[indexAbaNotaAtiva].texto || '';
+});
+
+function salvar() { localStorage.setItem('dadosBM_V6', JSON.stringify(dados)); }
+
+// ============================================================
+// FUNÇÕES DA GUIA PRODUTIVIDADE
+// ============================================================
+function atualizarProdutividade() {
+  calcularStreak();
+  calcularTotalFeito();
+  calcularEquilibrio();
+  calcularAproveitamentoHoje();
+  calcularFoco();
+}
+
+function calcularStreak() {
+  let streak = 0;
+  let data = new Date(hojeReal);
+  data.setHours(0,0,0,0);
+  const hojeNum = obterNumeroDia(data);
+  const chaveHoje = `${data.getFullYear()}-${hojeNum}`;
+  const temHoje = (dados.historicoConclusoes[chaveHoje] && dados.historicoConclusoes[chaveHoje].length > 0);
+  if (temHoje) {
+    streak = 1;
+    let dia = new Date(data);
+    dia.setDate(dia.getDate() - 1);
+    while (true) {
+      const numDia = obterNumeroDia(dia);
+      const chave = `${dia.getFullYear()}-${numDia}`;
+      const tem = (dados.historicoConclusoes[chave] && dados.historicoConclusoes[chave].length > 0);
+      if (tem) { streak++; dia.setDate(dia.getDate() - 1); }
+      else break;
+    }
+  }
+  document.getElementById('streakValor').innerText = `${streak} ${streak===1?'dia':'dias'}`;
+  const sub = document.getElementById('streakSub');
+  if (streak===0) sub.innerText = 'Comece hoje!';
+  else if (streak<3) sub.innerText = 'Continue assim!';
+  else if (streak<7) sub.innerText = 'Ótimo ritmo!';
+  else sub.innerText = '🔥 Você está em chamas!';
+
+  let nivel = Math.min(streak, 6);
+  let imagensNivel = STREAK_IMAGES[nivel] || STREAK_IMAGES[0];
+  let imagemEscolhida;
+  if (streak >= 7) {
+    const todas = STREAK_IMAGES.flat();
+    imagemEscolhida = todas[Math.floor(Math.random() * todas.length)];
+  } else {
+    imagemEscolhida = imagensNivel[Math.floor(Math.random() * imagensNivel.length)];
+  }
+  document.getElementById('imagemStreak').innerHTML = `<img src="${imagemEscolhida}" alt="Streak">`;
+}
+
+function calcularTotalFeito() {
+  let total = 0;
+  Object.values(dados.historicoConclusoes).forEach(lista => total += lista.length);
+  document.getElementById('statTotal').innerText = total;
+}
+
+function calcularEquilibrio() {
+  const hoje = new Date(hojeReal);
+  const diaSem = hoje.getDay();
+  const diffSegunda = (diaSem === 0 ? -6 : 1 - diaSem);
+  const inicioSemana = new Date(hoje);
+  inicioSemana.setDate(hoje.getDate() + diffSegunda);
+  inicioSemana.setHours(0,0,0,0);
+  const fimSemana = new Date(inicioSemana);
+  fimSemana.setDate(inicioSemana.getDate() + 6);
+  fimSemana.setHours(23,59,59,999);
+
+  const contagem = {};
+  let totalJoinhas = 0;
+  for (let d = new Date(inicioSemana); d <= fimSemana; d.setDate(d.getDate() + 1)) {
+    const numDia = obterNumeroDia(d);
+    const chave = `${d.getFullYear()}-${numDia}`;
+    const lista = dados.historicoConclusoes[chave] || [];
+    if (lista.length === 0) continue;
+    const diaSemana = d.getDay();
+    const turnos = dados.gradeAgenda[diaSemana] || [];
+    lista.forEach(idx => {
+      const idDisc = turnos[idx];
+      if (idDisc) {
+        contagem[idDisc] = (contagem[idDisc] || 0) + 1;
+        totalJoinhas++;
       }
-      // Adicione mais combinações aqui, seguindo o mesmo formato.
-    ];
-
-    // --- DADOS PRINCIPAIS ---
-    let dados = JSON.parse(localStorage.getItem('dadosBM_V6')) || {
-      disciplinas: [],
-      gradeAgenda: { 0: [""], 1: [""], 2: [""], 3: [""], 4: [""], 5: [""], 6: [""] },
-      historicoConclusoes: {},
-      configNotas: [
-        { titulo: "Geral", texto: "" },
-        { titulo: "Aba 2", texto: "" },
-        { titulo: "Aba 3", texto: "" },
-        { titulo: "Aba 4", texto: "" },
-        { titulo: "Aba 5", texto: "" },
-        { titulo: "Aba 6", texto: "" },
-        { titulo: "Aba 7", texto: "" }
-      ],
-      // Armazena a combinação escolhida para o dia (para não mudar no meio do dia)
-      combinacaoCronometroDia: null,
-      dataCombCrono: null
-    };
-
-    const diasSemanaNomes = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
-    let modoEdicaoGrade = false;
-    let indexAbaNotaAtiva = 0;
-    let anoAtual = new Date().getFullYear();
-    const hojeReal = new Date();
-
-    // --- ESTADO DO CRONÔMETRO ---
-    let cronoInterval = null;
-    let cronoRestante = 25 * 60; // segundos
-    let cronoTotal = 25 * 60;
-    let cronoRodando = false;
-    let combinacaoAtual = null;
-
-    document.addEventListener("DOMContentLoaded", () => {
-      inicializarAnos();
-      reconstruirCalendario();
-      renderizarDisciplinasDoDia();
-      renderizarAgenda();
-      renderizarAbasArcoIris();
-      fazerModalArrastavel();
-      focarScrollNoDiaAtual();
-      // Inicializa guia produtividade
-      atualizarProdutividade();
-      inicializarCronometro();
     });
+  }
+  if (totalJoinhas === 0) {
+    document.getElementById('statEquilibrio').innerText = '0%';
+    window._rankingSemanal = null;
+    return;
+  }
+  const percentuais = {};
+  for (let id in contagem) percentuais[id] = (contagem[id] / totalJoinhas) * 100;
+  window._rankingSemanal = { percentuais, contagem, totalJoinhas };
+  const maxId = Object.keys(percentuais).reduce((a,b) => percentuais[a] > percentuais[b] ? a : b);
+  document.getElementById('statEquilibrio').innerText = `${Math.round(percentuais[maxId] || 0)}%`;
+}
 
-    function salvar() { localStorage.setItem('dadosBM_V6', JSON.stringify(dados)); }
+function abrirModalRanking() {
+  const modal = document.getElementById('modalRanking');
+  modal.classList.add('aberto');
+  const conteudo = document.getElementById('conteudoRanking');
+  const dadosRank = window._rankingSemanal;
+  if (!dadosRank || dadosRank.totalJoinhas === 0) {
+    conteudo.innerHTML = '<p style="text-align:center;color:var(--texto-secundario);">Nenhum estudo nesta semana.</p>';
+    return;
+  }
+  let html = '';
+  const sorted = Object.entries(dadosRank.percentuais).sort((a,b) => b[1] - a[1]);
+  sorted.forEach(([id, perc]) => {
+    const disc = dados.disciplinas.find(d => d.id === id);
+    const nome = disc ? disc.nome : 'Desconhecida';
+    const qtd = dadosRank.contagem[id] || 0;
+    html += `<div class="item-ranking"><span>${nome}</span><div class="barra"><div class="preenchimento" style="width:${perc}%;"></div></div><span>${Math.round(perc)}% (${qtd})</span></div>`;
+  });
+  conteudo.innerHTML = html;
+}
+function fecharModalRanking() { document.getElementById('modalRanking').classList.remove('aberto'); }
 
-    // --- FUNÇÕES DA GUIA PRODUTIVIDADE ---
+function calcularAproveitamentoHoje() {
+  const hoje = hojeReal;
+  const diaSem = hoje.getDay();
+  const turnos = dados.gradeAgenda[diaSem] || [];
+  const agendados = turnos.filter(id => id !== "").length;
+  if (agendados === 0) { document.getElementById('statAproveitamento').innerText = '--'; return; }
+  const numDia = obterNumeroDia(hoje);
+  const chave = `${hoje.getFullYear()}-${numDia}`;
+  const concluidos = (dados.historicoConclusoes[chave] || []).length;
+  document.getElementById('statAproveitamento').innerText = `${Math.round((concluidos/agendados)*100)}%`;
+}
 
-    function atualizarProdutividade() {
-      calcularStreak();
-      calcularTotalFeito();
-      calcularEquilibrio();
-      calcularAproveitamentoHoje();
-      calcularFoco();
-    }
+function calcularFoco() {
+  let contagem = {};
+  Object.keys(dados.historicoConclusoes).forEach(chave => {
+    const lista = dados.historicoConclusoes[chave] || [];
+    const partes = chave.split('-');
+    const ano = parseInt(partes[0]);
+    const diaAno = parseInt(partes[1]);
+    const data = new Date(ano, 0, 0);
+    data.setDate(data.getDate() + diaAno);
+    const diaSem = data.getDay();
+    const turnos = dados.gradeAgenda[diaSem] || [];
+    lista.forEach(idx => {
+      const id = turnos[idx];
+      if (id) contagem[id] = (contagem[id] || 0) + 1;
+    });
+  });
+  let maxId = null, maxCount = 0;
+  for (let id in contagem) {
+    if (contagem[id] > maxCount) { maxCount = contagem[id]; maxId = id; }
+  }
+  if (maxId) {
+    const disc = dados.disciplinas.find(d => d.id === maxId);
+    document.getElementById('statFoco').innerText = disc ? disc.nome : '--';
+  } else document.getElementById('statFoco').innerText = '--';
+}
 
-    // 1. Ofensiva (Streak)
-    function calcularStreak() {
-      // Dias consecutivos a partir de hoje (incluindo hoje) que têm pelo menos um estudo
-      let streak = 0;
-      let data = new Date(hojeReal);
-      data.setHours(0,0,0,0);
-      const hojeNum = obterNumeroDia(data);
+function obterNumeroDia(data) {
+  const inicio = new Date(data.getFullYear(), 0, 0);
+  return Math.floor((data - inicio) / 86400000);
+}
 
-      // Verifica se hoje tem estudos
-      const chaveHoje = `${data.getFullYear()}-${hojeNum}`;
-      const temHoje = (dados.historicoConclusoes[chaveHoje] && dados.historicoConclusoes[chaveHoje].length > 0);
-      
-      if (temHoje) {
-        streak = 1;
-        // Avança para dias anteriores
-        let dia = new Date(data);
-        dia.setDate(dia.getDate() - 1);
-        while (true) {
-          const numDia = obterNumeroDia(dia);
-          const chave = `${dia.getFullYear()}-${numDia}`;
-          const temEstudo = (dados.historicoConclusoes[chave] && dados.historicoConclusoes[chave].length > 0);
-          if (temEstudo) {
-            streak++;
-            dia.setDate(dia.getDate() - 1);
-          } else {
-            break;
-          }
-        }
-      }
+// ============================================================
+// CRONÔMETRO
+// ============================================================
+function inicializarCronometro() {
+  const hojeStr = hojeReal.toDateString();
+  if (dados.combinacaoCronometroDia && dados.dataCombCrono === hojeStr) {
+    const comb = CRONOMETRO_COMBINACOES.find(c => c.nome === dados.combinacaoCronometroDia);
+    if (comb) combinacaoAtual = comb;
+    else escolherNovaCombinacao();
+  } else escolherNovaCombinacao();
 
-      // Atualiza UI
-      document.getElementById('streakValor').innerText = `${streak} ${streak === 1 ? 'dia' : 'dias'}`;
-      const sub = document.getElementById('streakSub');
-      if (streak === 0) sub.innerText = 'Comece hoje!';
-      else if (streak < 3) sub.innerText = 'Continue assim!';
-      else if (streak < 7) sub.innerText = 'Ótimo ritmo!';
-      else sub.innerText = '🔥 Você está em chamas!';
+  cronoTotal = 15 * 60;
+  cronoRestante = cronoTotal;
+  atualizarDisplayCrono();
+  document.getElementById('combinacaoNome').innerText = `Cenário: ${combinacaoAtual.nome}`;
+  atualizarFundoCrono(0);
+}
 
-      // Escolhe a imagem baseada no streak
-      let nivel = Math.min(streak, 6); // 0 a 6
-      let imagensNivel = STREAK_IMAGES[nivel] || STREAK_IMAGES[0];
-      // Se streak >=7, escolhe aleatório entre todas as 21 imagens
-      let imagemEscolhida;
-      if (streak >= 7) {
-        const todas = STREAK_IMAGES.flat();
-        imagemEscolhida = todas[Math.floor(Math.random() * todas.length)];
-      } else {
-        imagemEscolhida = imagensNivel[Math.floor(Math.random() * imagensNivel.length)];
-      }
+function escolherNovaCombinacao() {
+  const idx = Math.floor(Math.random() * CRONOMETRO_COMBINACOES.length);
+  combinacaoAtual = CRONOMETRO_COMBINACOES[idx];
+  dados.combinacaoCronometroDia = combinacaoAtual.nome;
+  dados.dataCombCrono = hojeReal.toDateString();
+  salvar();
+}
 
-      const container = document.getElementById('imagemStreak');
-      container.innerHTML = `<img src="${imagemEscolhida}" alt="Streak" style="width:100%;height:100%;object-fit:cover;">`;
-    }
+function atualizarFundoCrono(progresso) {
+  const imgs = combinacaoAtual.imagens;
+  if (!imgs || imgs.length === 0) return;
+  const idx = Math.min(Math.floor(progresso * imgs.length), imgs.length - 1);
+  const container = document.getElementById('cronometroContainer');
+  container.style.backgroundImage = `url('${imgs[idx]}')`;
+  container.style.backgroundSize = 'cover';
+  container.style.backgroundPosition = 'center';
+}
 
-    // 2. Total Feito
-    function calcularTotalFeito() {
-      let total = 0;
-      Object.values(dados.historicoConclusoes).forEach(lista => total += lista.length);
-      document.getElementById('statTotal').innerText = total;
-    }
+function atualizarDisplayCrono() {
+  const min = Math.floor(cronoRestante / 60);
+  const seg = Math.floor(cronoRestante % 60);
+  document.getElementById('cronoTexto').innerText = 
+    `${String(min).padStart(2, '0')}:${String(seg).padStart(2, '0')}`;
+}
 
-    // 3. Equilíbrio da Semana (calcula distribuição dos joinhas na semana atual)
-    function calcularEquilibrio() {
-      // Determinar início da semana (segunda-feira) e fim (domingo)
-      const hoje = new Date(hojeReal);
-      const diaSem = hoje.getDay(); // 0=domingo
-      const diffSegunda = (diaSem === 0 ? -6 : 1 - diaSem); // quantos dias para trás até segunda
-      const inicioSemana = new Date(hoje);
-      inicioSemana.setDate(hoje.getDate() + diffSegunda);
-      inicioSemana.setHours(0,0,0,0);
-      const fimSemana = new Date(inicioSemana);
-      fimSemana.setDate(inicioSemana.getDate() + 6);
-      fimSemana.setHours(23,59,59,999);
-
-      // Mapear disciplina -> contagem de joinhas na semana
-      const contagem = {};
-      let totalJoinhas = 0;
-      for (let d = new Date(inicioSemana); d <= fimSemana; d.setDate(d.getDate() + 1)) {
-        const numDia = obterNumeroDia(d);
-        const chave = `${d.getFullYear()}-${numDia}`;
-        const lista = dados.historicoConclusoes[chave] || [];
-        if (lista.length === 0) continue;
-        // Para cada índice de estudo concluído, precisamos saber qual disciplina corresponde
-        const diaSemana = d.getDay();
-        const turnos = dados.gradeAgenda[diaSemana] || [];
-        lista.forEach(idx => {
-          const idDisc = turnos[idx];
-          if (idDisc) {
-            contagem[idDisc] = (contagem[idDisc] || 0) + 1;
-            totalJoinhas++;
-          }
-        });
-      }
-
-      // Se não houver joinhas, exibe 0%
-      if (totalJoinhas === 0) {
-        document.getElementById('statEquilibrio').innerText = '0%';
-        return;
-      }
-
-      // Calcular percentuais
-      const percentuais = {};
-      for (let id in contagem) {
-        percentuais[id] = (contagem[id] / totalJoinhas) * 100;
-      }
-
-      // Guardar para o modal
-      window._rankingSemanal = { percentuais, contagem, totalJoinhas };
-
-      // Exibe o percentual da disciplina mais frequente (ou o maior)
-      const maxId = Object.keys(percentuais).reduce((a, b) => percentuais[a] > percentuais[b] ? a : b);
-      const maxPerc = percentuais[maxId] || 0;
-      document.getElementById('statEquilibrio').innerText = `${Math.round(maxPerc)}%`;
-    }
-
-    function abrirModalRanking() {
-      const modal = document.getElementById('modalRanking');
-      modal.classList.add('aberto');
-      const conteudo = document.getElementById('conteudoRanking');
-      const dadosRank = window._rankingSemanal;
-      if (!dadosRank || dadosRank.totalJoinhas === 0) {
-        conteudo.innerHTML = '<p style="text-align:center;color:var(--texto-secundario);">Nenhum estudo registrado nesta semana.</p>';
-        return;
-      }
-      let html = '';
-      // Ordenar por percentual decrescente
-      const sorted = Object.entries(dadosRank.percentuais).sort((a, b) => b[1] - a[1]);
-      sorted.forEach(([id, perc]) => {
-        const disc = dados.disciplinas.find(d => d.id === id);
-        const nome = disc ? disc.nome : 'Desconhecida';
-        const qtd = dadosRank.contagem[id] || 0;
-        html += `
-          <div class="item-ranking">
-            <span>${nome}</span>
-            <div class="barra"><div class="preenchimento" style="width:${perc}%;"></div></div>
-            <span>${Math.round(perc)}% (${qtd})</span>
-          </div>
-        `;
-      });
-      conteudo.innerHTML = html;
-    }
-
-    function fecharModalRanking() {
-      document.getElementById('modalRanking').classList.remove('aberto');
-    }
-
-    // 4. Aproveitamento Hoje
-    function calcularAproveitamentoHoje() {
-      const hoje = hojeReal;
-      const diaSem = hoje.getDay();
-      const turnos = dados.gradeAgenda[diaSem] || [];
-      const agendados = turnos.filter(id => id !== "").length;
-      if (agendados === 0) {
-        document.getElementById('statAproveitamento').innerText = '--';
-        return;
-      }
-      const numDia = obterNumeroDia(hoje);
-      const chave = `${hoje.getFullYear()}-${numDia}`;
-      const concluidos = (dados.historicoConclusoes[chave] || []).length;
-      const perc = Math.round((concluidos / agendados) * 100);
-      document.getElementById('statAproveitamento').innerText = `${perc}%`;
-    }
-
-    // 5. Foco (disciplina mais estudada no total)
-    function calcularFoco() {
-      let contagem = {};
-      Object.keys(dados.historicoConclusoes).forEach(chave => {
-        const lista = dados.historicoConclusoes[chave] || [];
-        // Precisamos mapear o índice para disciplina usando a grade do dia correspondente
-        const partes = chave.split('-');
-        const ano = parseInt(partes[0]);
-        const diaAno = parseInt(partes[1]);
-        const data = new Date(ano, 0, 0);
-        data.setDate(data.getDate() + diaAno);
-        const diaSem = data.getDay();
-        const turnos = dados.gradeAgenda[diaSem] || [];
-        lista.forEach(idx => {
-          const id = turnos[idx];
-          if (id) contagem[id] = (contagem[id] || 0) + 1;
-        });
-      });
-      let maxId = null;
-      let maxCount = 0;
-      for (let id in contagem) {
-        if (contagem[id] > maxCount) {
-          maxCount = contagem[id];
-          maxId = id;
-        }
-      }
-      if (maxId) {
-        const disc = dados.disciplinas.find(d => d.id === maxId);
-        document.getElementById('statFoco').innerText = disc ? disc.nome : '--';
-      } else {
-        document.getElementById('statFoco').innerText = '--';
-      }
-    }
-
-    // Utilitário: obter número do dia no ano (1-366)
-    function obterNumeroDia(data) {
-      const inicio = new Date(data.getFullYear(), 0, 0);
-      const diff = data - inicio;
-      return Math.floor(diff / (1000 * 60 * 60 * 24));
-    }
-
-    // --- CRONÔMETRO ---
-
-    function inicializarCronometro() {
-      // Verifica se já existe combinação escolhida para hoje
-      const hojeStr = hojeReal.toDateString();
-      if (dados.combinacaoCronometroDia && dados.dataCombCrono === hojeStr) {
-        // Usa a combinação salva
-        const comb = CRONOMETRO_COMBINACOES.find(c => c.nome === dados.combinacaoCronometroDia);
-        if (comb) {
-          combinacaoAtual = comb;
-        } else {
-          // Se não encontrar, escolhe nova
-          escolherNovaCombinacao();
-        }
-      } else {
-        escolherNovaCombinacao();
-      }
-
-      // Exibe a primeira imagem
-      atualizarImagemCronometro(0);
-      document.getElementById('combinacaoNome').innerText = `Cenário: ${combinacaoAtual.nome}`;
-      
-      // Configura tempo inicial (25 min)
-      cronoTotal = 25 * 60;
+function editarTempoCrono() {
+  if (cronoRodando) return;
+  const display = document.getElementById('cronoTexto');
+  const atual = display.innerText;
+  const partes = atual.split(':');
+  const min = parseInt(partes[0]) || 0;
+  const seg = parseInt(partes[1]) || 0;
+  const novo = prompt('Digite o novo tempo no formato MM:SS (ex: 25:00):', `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`);
+  if (novo === null) return;
+  const match = novo.match(/^(\d{1,2}):(\d{2})$/);
+  if (match) {
+    const m = parseInt(match[1]);
+    const s = parseInt(match[2]);
+    if (m >= 0 && s >= 0 && s < 60) {
+      cronoTotal = m * 60 + s;
       cronoRestante = cronoTotal;
-      atualizarDisplay();
+      atualizarDisplayCrono();
+      atualizarFundoCrono(0);
+      return;
     }
+  }
+  alert('Formato inválido. Use MM:SS');
+}
 
-    function escolherNovaCombinacao() {
-      const idx = Math.floor(Math.random() * CRONOMETRO_COMBINACOES.length);
-      combinacaoAtual = CRONOMETRO_COMBINACOES[idx];
-      // Salva no localStorage
-      dados.combinacaoCronometroDia = combinacaoAtual.nome;
-      dados.dataCombCrono = hojeReal.toDateString();
-      salvar();
-    }
+function iniciarCronometro() {
+  if (cronoRodando) return;
+  if (cronoRestante <= 0) { reiniciarCronometro(); return; }
+  cronoRodando = true;
+  document.getElementById('btnIniciarCrono').classList.add('ativo');
+  const total = cronoTotal;
+  const inicio = Date.now();
+  const restanteInicio = cronoRestante;
 
-    function atualizarImagemCronometro(progresso) {
-      // progresso de 0 a 1
-      const imgs = combinacaoAtual.imagens;
-      if (!imgs || imgs.length === 0) return;
-      const idx = Math.min(Math.floor(progresso * imgs.length), imgs.length - 1);
-      const img = document.getElementById('imagemCronometro');
-      img.src = imgs[idx];
-      img.style.display = 'block';
-    }
-
-    function atualizarDisplay() {
-      const min = Math.floor(cronoRestante / 60);
-      const seg = cronoRestante % 60;
-      document.getElementById('displayTempo').innerText = 
-        `${String(min).padStart(2, '0')}:${String(seg).padStart(2, '0')}`;
-    }
-
-    function iniciarCronometro() {
-      if (cronoRodando) return;
-      if (cronoRestante <= 0) {
-        reiniciarCronometro();
-        return;
-      }
-      cronoRodando = true;
-      document.getElementById('btnIniciarCrono').classList.add('ativo');
-      const total = cronoTotal;
-      const inicio = Date.now();
-      const restanteInicio = cronoRestante;
-
-      cronoInterval = setInterval(() => {
-        const decorrido = (Date.now() - inicio) / 1000;
-        let novoRestante = restanteInicio - decorrido;
-        if (novoRestante < 0) novoRestante = 0;
-        cronoRestante = novoRestante;
-        atualizarDisplay();
-
-        // Atualiza imagem conforme progresso (1 - (restante / total))
-        const progresso = 1 - (cronoRestante / total);
-        atualizarImagemCronometro(progresso);
-
-        if (cronoRestante <= 0) {
-          clearInterval(cronoInterval);
-          cronoInterval = null;
-          cronoRodando = false;
-          document.getElementById('btnIniciarCrono').classList.remove('ativo');
-          // Coloca imagem final
-          atualizarImagemCronometro(1);
-        }
-      }, 200);
-    }
-
-    function pausarCronometro() {
-      if (cronoInterval) {
-        clearInterval(cronoInterval);
-        cronoInterval = null;
-        cronoRodando = false;
-        document.getElementById('btnIniciarCrono').classList.remove('ativo');
-      }
-    }
-
-    function reiniciarCronometro() {
-      pausarCronometro();
-      cronoTotal = 25 * 60;
-      cronoRestante = cronoTotal;
-      atualizarDisplay();
-      atualizarImagemCronometro(0);
+  cronoInterval = setInterval(() => {
+    const decorrido = (Date.now() - inicio) / 1000;
+    let novoRestante = restanteInicio - decorrido;
+    if (novoRestante < 0) novoRestante = 0;
+    cronoRestante = novoRestante;
+    atualizarDisplayCrono();
+    const progresso = 1 - (cronoRestante / total);
+    atualizarFundoCrono(progresso);
+    if (cronoRestante <= 0) {
+      clearInterval(cronoInterval);
+      cronoInterval = null;
+      cronoRodando = false;
       document.getElementById('btnIniciarCrono').classList.remove('ativo');
+      atualizarFundoCrono(1);
     }
+  }, 200);
+}
 
-    // --- AS DEMAIS FUNÇÕES (registro, grade, notas) PERMANECEM INALTERADAS ---
-    // (código original continua abaixo)
+function pausarCronometro() {
+  if (cronoInterval) {
+    clearInterval(cronoInterval);
+    cronoInterval = null;
+    cronoRodando = false;
+    document.getElementById('btnIniciarCrono').classList.remove('ativo');
+  }
+}
 
-    function inicializarAnos() {
-      const sel = document.getElementById("seletorAno");
-      sel.innerHTML = "";
-      for(let a = anoAtual; a >= anoAtual - 3; a--) {
-        let opt = document.createElement("option");
-        opt.value = a; opt.innerText = a;
-        sel.appendChild(opt);
-      }
-      sel.value = anoAtual;
-    }
+function reiniciarCronometro() {
+  pausarCronometro();
+  cronoRestante = cronoTotal;
+  atualizarDisplayCrono();
+  atualizarFundoCrono(0);
+  document.getElementById('btnIniciarCrono').classList.remove('ativo');
+}
 
-    function mudarAno(ano) {
-      anoAtual = parseInt(ano);
-      reconstruirCalendario();
-      renderizarDisciplinasDoDia();
-      focarScrollNoDiaAtual();
-    }
+// ============================================================
+// BLOCO DE NOTAS (contenteditable)
+// ============================================================
+function expandirBloco() {
+  const bloco = document.getElementById('fundoFicharioNotas');
+  if (!bloco.classList.contains('expandido')) {
+    bloco.classList.add('expandido');
+    document.getElementById('painel-produtividade').style.position = 'relative';
+  }
+}
 
-    function reconstruirCalendario() {
-      document.getElementById("caixa-ano").innerText = anoAtual;
-      const jan1 = new Date(anoAtual, 0, 1);
-      const diaSemanaInicioAno = jan1.getDay();
-      const anoBissexto = ((anoAtual % 4) === 0 && (anoAtual % 100) !== 0) || (anoAtual % 400 === 0);
-      const diasAno = anoBissexto ? 366 : 365;
+function fecharExpandido() {
+  const bloco = document.getElementById('fundoFicharioNotas');
+  bloco.classList.remove('expandido');
+  document.getElementById('editorNotas').blur();
+}
 
-      const dif = hojeReal - jan1;
-      const diaAnoAtualBase = Math.floor(dif / (1000 * 60 * 60 * 24)) + 1;
-      const semanaAtual = Math.ceil((diaAnoAtualBase + diaSemanaInicioAno) / 7);
+function execCmd(cmd, value) {
+  document.execCommand(cmd, false, value || null);
+  salvarTextoGuiaAtual();
+}
 
-      document.querySelectorAll(".caixa-dias-semana > div").forEach(d => d.classList.remove("dia-semana-marcado"));
-      if(anoAtual === hojeReal.getFullYear()) {
-         const labelDia = document.getElementById(`lbl-d-${hojeReal.getDay()}`);
-         if(labelDia) labelDia.classList.add("dia-semana-marcado");
-      }
+function salvarTextoGuiaAtual() {
+  const editor = document.getElementById('editorNotas');
+  dados.configNotas[indexAbaNotaAtiva].texto = editor.innerHTML;
+  salvar();
+}
 
-      const elSemanas = document.getElementById('caixa-semanas-ano');
-      elSemanas.innerHTML = "";
-      for (let i = 1; i <= 53; i++) {
-        const div = document.createElement('div');
-        div.innerText = i;
-        if(anoAtual === hojeReal.getFullYear() && i === semanaAtual) div.classList.add("semana-atual-marcada");
-        elSemanas.appendChild(div);
-      }
-
-      const elDiario = document.getElementById('diario');
-      elDiario.innerHTML = "";
-
-      const diasAnoAjustado = diaSemanaInicioAno + diasAno;
-      const sobraUltima = 7 - (diasAnoAjustado % 7);
-      const totalCelulas = diasAnoAjustado + (sobraUltima < 7 ? sobraUltima : 0);
-      const indiceDiaAtualReal = diaAnoAtualBase + diaSemanaInicioAno - 1;
-
-      for (let i = 0; i < totalCelulas; i++) {
-        const celula = document.createElement('div');
-        celula.classList.add("celula-dia");
-
-        if (i < diaSemanaInicioAno || i >= diasAnoAjustado) {
-          celula.classList.add("morto");
-        } else {
-          const numDiaDoAno = i - diaSemanaInicioAno + 1;
-          const chaveDia = `${anoAtual}-${numDiaDoAno}`;
-
-          if (anoAtual < hojeReal.getFullYear()) {
-            celula.classList.add("percorrido");
-          } else if (anoAtual === hojeReal.getFullYear()) {
-            if (i === indiceDiaAtualReal) celula.classList.add("marca-dia-atual");
-            else if (i < indiceDiaAtualReal) celula.classList.add("percorrido");
-          }
-
-          const listaConcluidos = dados.historicoConclusoes[chaveDia] || [];
-          const diaDaSemanaDoDia = new Date(anoAtual, 0, numDiaDoAno).getDay();
-          const totalAgendadoEsseDia = (dados.gradeAgenda[diaDaSemanaDoDia] || []).filter(id => id !== "").length;
-
-          if (totalAgendadoEsseDia > 0 && listaConcluidos.length > 0) {
-            const porcentagem = (listaConcluidos.length / totalAgendadoEsseDia) * 100;
-            if (porcentagem >= 100) {
-              celula.classList.add("p-100");
-              celula.innerText = "⭐"; 
-            } else if (porcentagem >= 75) celula.classList.add("p-75");
-            else if (porcentagem >= 50) celula.classList.add("p-50");
-            else if (porcentagem > 0) celula.classList.add("p-25");
-          }
-        }
-        elDiario.appendChild(celula);
-      }
-    }
-
-    function focarScrollNoDiaAtual() {
-      const wrapper = document.getElementById("calendarioScroll");
-      setTimeout(() => {
-        const celulaAtual = document.querySelector(".celula-dia.marca-dia-atual");
-        if (celulaAtual) {
-          const posicaoX = celulaAtual.offsetLeft;
-          wrapper.scrollLeft = posicaoX - wrapper.clientWidth + celulaAtual.clientWidth + 15;
-        } else {
-          wrapper.scrollLeft = wrapper.scrollWidth;
-        }
-      }, 200);
-    }
-
-    function renderizarDisciplinasDoDia() {
-      const container = document.getElementById("listaDisciplinas");
-      container.innerHTML = "";
-
-      const diaSemanaHoje = hojeReal.getDay();
-      const rotinaHoje = dados.gradeAgenda[diaSemanaHoje] || [];
-      const idsAgendados = rotinaHoje.filter(id => id !== "");
-
-      if (idsAgendados.length === 0 || anoAtual !== hojeReal.getFullYear()) {
-        container.innerHTML = `<p style="font-size:0.75rem; color:var(--texto-secundario); font-style:italic;">Nenhuma ficha agendada na sua grade para o dia de hoje.</p>`;
-        return;
-      }
-
-      const jan1 = new Date(hojeReal.getFullYear(), 0, 1);
-      const numDiaHoje = Math.floor((hojeReal - jan1) / 86400000) + 1;
-      const chaveHoje = `${hojeReal.getFullYear()}-${numDiaHoje}`;
-
-      rotinaHoje.forEach((idDisc, indexEstudo) => {
-        if(!idDisc) return;
-        const disc = dados.disciplinas.find(d => d.id === idDisc);
-        if (!disc) return;
-
-        const concluidosHoje = dados.historicoConclusoes[chaveHoje] || [];
-        const jaFeito = concluidosHoje.includes(indexEstudo);
-        const iconGrupo = dicionarioIcones[disc.grupo] || dicionarioIcones['geral'];
-
-        const card = document.createElement("div");
-        card.classList.add("card-disciplina");
-        card.innerHTML = `
-          <div class="info-disciplina">
-            <h3>${iconGrupo} ${disc.nome}</h3>
-            <p>Estudo ${indexEstudo + 1}</p>
-          </div>
-          <button class="btn-joinha ${jaFeito ? 'checked' : ''}" onclick="alternarEstudoTurno('${chaveHoje}', ${indexEstudo})">
-            <i class="fa-solid fa-thumbs-up"></i>
-          </button>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function alternarEstudoTurno(chaveHoje, indexEstudo) {
-      if(!dados.historicoConclusoes[chaveHoje]) dados.historicoConclusoes[chaveHoje] = [];
-      let lista = dados.historicoConclusoes[chaveHoje];
-      
-      if(lista.includes(indexEstudo)) {
-        dados.historicoConclusoes[chaveHoje] = lista.filter(i => i !== indexEstudo);
-      } else {
-        lista.push(indexEstudo);
-      }
-      salvar();
-      renderizarDisciplinasDoDia();
-      reconstruirCalendario();
-      atualizarProdutividade(); // atualiza métricas da guia produtividade
-    }
-
-    function renderizarAgenda() {
-      const pagina = document.getElementById("agendaPagina");
-      pagina.innerHTML = "";
-
-      diasSemanaNomes.forEach((diaNome, indexDia) => {
-        const bloco = document.createElement("div");
-        bloco.classList.add("agenda-dia-bloco");
-
-        let html = `
-          <div class="agenda-dia-titulo">
-            <div>${diaNome}</div>
-            ${modoEdicaoGrade ? `<button class="btn-sub-action add" onclick="adicionarTurno(${indexDia})"><i class="fa-solid fa-plus"></i> Estudo</button>` : ''}
-          </div>
-          <div class="agenda-horarios-container">
-        `;
-
-        const turnos = dados.gradeAgenda[indexDia] || [""];
-        turnos.forEach((idSelecionado, indexTurno) => {
-          const disc = dados.disciplinas.find(d => d.id === idSelecionado);
-          const iconGrupo = disc ? (dicionarioIcones[disc.grupo] || '') : '';
-
-          html += `<div class="agenda-linha-horario"><div class="agenda-hora-label">Estudo ${indexTurno + 1}</div>`;
-
-          if (modoEdicaoGrade) {
-            let opcoes = `<option value="">-- Vago --</option>`;
-            dados.disciplinas.forEach(d => {
-              opcoes += `<option value="${d.id}" ${d.id === idSelecionado ? 'selected' : ''}>${d.nome}</option>`;
-            });
-            html += `
-              <select class="seletor-disciplina" onchange="vincularAgenda(${indexDia}, ${indexTurno}, this.value)">${opcoes}</select>
-              <button class="btn-sub-action" onclick="removerTurno(${indexDia}, ${indexTurno})"><i class="fa-solid fa-trash"></i></button>
-            `;
-          } else {
-            html += `<div class="agenda-disciplina-valor ${!disc ? 'vazio' : ''}">${disc ? iconGrupo + ' ' + disc.nome : 'Vago'}</div>`;
-          }
-          html += `</div>`;
-        });
-
-        html += `</div>`;
-        bloco.innerHTML = html;
-        pagina.appendChild(bloco);
-      });
-    }
-
-    function adicionarTurno(dia) { dados.gradeAgenda[dia].push(""); salvar(); renderizarAgenda(); }
-    function removerTurno(dia, turno) { dados.gradeAgenda[dia].splice(turno, 1); salvar(); renderizarAgenda(); }
-    function vincularAgenda(dia, turno, valor) { dados.gradeAgenda[dia][turno] = valor; salvar(); }
-
-    function alternarModoEdicao() {
-      modoEdicaoGrade = !modoEdicaoGrade;
-      document.getElementById("btnEditarGrade").innerText = modoEdicaoGrade ? "Concluir" : "Editar Agenda";
-      document.getElementById("status-modo").innerText = modoEdicaoGrade ? "Modo: Configuração Ativa" : "Modo: Leitura";
-      renderizarAgenda();
-      if(!modoEdicaoGrade) renderizarDisciplinasDoDia();
-    }
-
-    // --- BLOCO DE NOTAS ---
-    function renderizarAbasArcoIris() {
-      const container = document.getElementById("abasArcoIrisContainer");
-      container.innerHTML = "";
-
-      dados.configNotas.forEach((aba, idx) => {
-        const divAba = document.createElement("div");
-        divAba.classList.add("aba-not");
-        if(idx === indexAbaNotaAtiva) divAba.classList.add("ativa");
-        
-        divAba.style.backgroundColor = `var(--aba-not-${idx})`;
-        divAba.style.color = "var(--texto-principal)";
-
-        divAba.innerHTML = `
-          <input type="text" id="input-aba-${idx}" value="${aba.titulo}" 
-            onblur="finalizarEdicaoTitulo(${idx}, this.value)" 
-            onkeydown="if(event.key === 'Enter') this.blur()">
-        `;
-
-        divAba.onclick = (e) => { if(e.target.tagName !== 'INPUT') selecionarAbaNota(idx); };
-        divAba.ondblclick = () => {
-          const inp = document.getElementById(`input-aba-${idx}`);
-          inp.style.pointerEvents = "auto";
-          inp.focus(); inp.select();
-        };
-
-        container.appendChild(divAba);
-      });
-
-      document.getElementById("fundoFicharioNotas").style.backgroundColor = `var(--aba-not-${indexAbaNotaAtiva})`;
-      const editor = document.getElementById("editorTextoNotas");
-      editor.style.backgroundColor = `var(--txt-not-${indexAbaNotaAtiva})`;
-      editor.value = dados.configNotas[indexAbaNotaAtiva].texto;
-    }
-
-    function selecionarAbaNota(idx) {
-      indexAbaNotaAtiva = idx;
-      renderizarAbasArcoIris();
-    }
-
-    function finalizarEdicaoTitulo(idx, novoValor) {
+// ============================================================
+// ABAS DO BLOCO DE NOTAS
+// ============================================================
+function renderizarAbasArcoIris() {
+  const container = document.getElementById('abasArcoIrisContainer');
+  container.innerHTML = '';
+  dados.configNotas.forEach((aba, idx) => {
+    const divAba = document.createElement('div');
+    divAba.classList.add('aba-not');
+    if (idx === indexAbaNotaAtiva) divAba.classList.add('ativa');
+    divAba.style.backgroundColor = `var(--aba-not-${idx})`;
+    divAba.style.color = 'var(--texto-principal)';
+    divAba.innerHTML = `
+      <input type="text" id="input-aba-${idx}" value="${aba.titulo}" 
+        onblur="finalizarEdicaoTitulo(${idx}, this.value)" 
+        onkeydown="if(event.key==='Enter') this.blur()">
+    `;
+    divAba.onclick = (e) => { if (e.target.tagName !== 'INPUT') selecionarAbaNota(idx); };
+    divAba.ondblclick = () => {
       const inp = document.getElementById(`input-aba-${idx}`);
-      inp.style.pointerEvents = "none";
-      dados.configNotas[idx].titulo = novoValor.trim() || `Aba ${idx + 1}`;
-      salvar(); renderizarAbasArcoIris();
-    }
-
-    function salvarTextoGuiaAtual() {
-      dados.configNotas[indexAbaNotaAtiva].texto = document.getElementById("editorTextoNotas").value;
-      salvar();
-    }
-
-    function formatarTexto(tipo) {
-      const txt = document.getElementById("editorTextoNotas");
-      const start = txt.selectionStart;
-      const end = txt.selectionEnd;
-      const textoSelecionado = txt.value.substring(start, end);
-      let novoTexto = "";
-
-      if(tipo === 'B') novoTexto = `**${textoSelecionado}**`;
-      else if(tipo === 'I') novoTexto = `*${textoSelecionado}*`;
-      else if(tipo === 'L') novoTexto = `\n* ${textoSelecionado}`;
-
-      txt.value = txt.value.substring(0, start) + novoTexto + txt.value.substring(end);
-      salvarTextoGuiaAtual();
-    }
-
-    // --- MODAL DE CADASTRO ---
-    function cadastrarDisciplina() {
-      const input = document.getElementById("inputNovaDisc");
-      const grupo = document.getElementById("selectGrupo").value;
-      const nome = input.value.trim();
-      if (!nome) return;
-
-      dados.disciplinas.push({ id: "d_" + Date.now(), nome: nome, grupo: grupo });
-      input.value = "";
-      salvar(); renderizarAgenda(); fecharModal();
-    }
-
-    function abrirModal() {
-      document.getElementById("winModal").style.display = "block";
-      const box = document.getElementById("windowBox");
-      box.style.top = Math.max(0, (window.innerHeight - box.clientHeight) / 2) + "px";
-      box.style.left = Math.max(0, (window.innerWidth - box.clientWidth) / 2) + "px";
-    }
-    function fecharModal() { document.getElementById("winModal").style.display = "none"; }
-    function fecharModalFora(e) { if(e.target.id === "winModal") fecharModal(); }
-    function mudarTema(t) { document.body.className = (t === 'light') ? 'tema-claro' : 'tema-escuro'; document.documentElement.setAttribute('data-theme', t); renderizarAbasArcoIris(); }
-    
-    function alternarAba(idx) {
-      document.querySelectorAll('.aba').forEach((a, i) => a.classList.toggle('ativa', i === idx));
-      document.querySelectorAll('.conteudo-fichario > .painel').forEach((p, i) => p.classList.toggle('ativo', i === idx));
-      if(idx === 2) {
-        atualizarProdutividade();
-        // Garante que o cronômetro reflita a combinação atual
-        if (combinacaoAtual) {
-          document.getElementById('combinacaoNome').innerText = `Cenário: ${combinacaoAtual.nome}`;
-          // Se não estiver rodando, mostra a primeira imagem
-          if (!cronoRodando) {
-            const progresso = 1 - (cronoRestante / cronoTotal);
-            atualizarImagemCronometro(progresso);
-          }
-        }
-      }
-    }
-
-    // --- DRAG MODAL ---
-    function fazerModalArrastavel() {
-      const box = document.getElementById("windowBox");
-      const header = document.getElementById("windowHeader");
-      let p1 = 0, p2 = 0, p3 = 0, p4 = 0;
-
-      header.onmousedown = iniciarDrag;
-      header.addEventListener('touchstart', iniciarDrag, { passive: false });
-
-      function iniciarDrag(e) {
-        e.preventDefault();
-        const cX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        const cY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-        p3 = cX; p4 = cY;
-        document.onmouseup = pararDrag;
-        document.onmousemove = moverDrag;
-        document.addEventListener('touchend', pararDrag);
-        document.addEventListener('touchmove', moverDrag, { passive: false });
-      }
-
-      function moverDrag(e) {
-        const cX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-        const cY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-        p1 = p3 - cX; p2 = p4 - cY;
-        p3 = cX; p4 = cY;
-        let nTop = box.offsetTop - p2;
-        let nLeft = box.offsetLeft - p1;
-
-        if (nTop < 0) nTop = 0;
-        if (nLeft < 0) nLeft = 0;
-        if (nTop + box.clientHeight > window.innerHeight) nTop = window.innerHeight - box.clientHeight;
-        if (nLeft + box.clientWidth > window.innerWidth) nLeft = window.innerWidth - box.clientWidth;
-
-        box.style.top = nTop + "px"; box.style.left = nLeft + "px";
-      }
-
-      function pararDrag() {
-        document.onmouseup = null; document.onmousemove = null;
-        document.removeEventListener('touchend', pararDrag);
-        document.removeEventListener('touchmove', moverDrag);
-      }
-    }
-
-    // Dicionário de ícones (já existente)
-    const dicionarioIcones = {
-      humanas: '<i class="fa-solid fa-book-open" style="color:#e6a15c;"></i>',
-      exatas: '<i class="fa-solid fa-calculator" style="color:#5ca1e6;"></i>',
-      natureza: '<i class="fa-solid fa-leaf" style="color:#5ce685;"></i>',
-      ti: '<i class="fa-solid fa-code" style="color:#a15ce6;"></i>',
-      artes: '<i class="fa-solid fa-palette" style="color:#e65c9d;"></i>',
-      geral: '<i class="fa-solid fa-graduation-cap" style="color:#64748b;"></i>'
+      inp.style.pointerEvents = 'auto';
+      inp.focus(); inp.select();
     };
-  </script>
+    container.appendChild(divAba);
+  });
+
+  document.getElementById('fundoFicharioNotas').style.backgroundColor = `var(--aba-not-${indexAbaNotaAtiva})`;
+  const editor = document.getElementById('editorNotas');
+  editor.style.backgroundColor = `var(--txt-not-${indexAbaNotaAtiva})`;
+  editor.innerHTML = dados.configNotas[indexAbaNotaAtiva].texto || '';
+  atualizarSetasAbas();
+}
+
+function selecionarAbaNota(idx) {
+  // Salva o conteúdo da aba atual antes de trocar
+  salvarTextoGuiaAtual();
+  indexAbaNotaAtiva = idx;
+  renderizarAbasArcoIris();
+}
+
+function finalizarEdicaoTitulo(idx, novoValor) {
+  const inp = document.getElementById(`input-aba-${idx}`);
+  inp.style.pointerEvents = 'none';
+  dados.configNotas[idx].titulo = novoValor.trim() || `Aba ${idx+1}`;
+  salvar();
+  renderizarAbasArcoIris();
+}
+
+// ============================================================
+// SETAS DE ROLAGEM DAS ABAS
+// ============================================================
+function atualizarSetasAbas() {
+  const container = document.getElementById('abasArcoIrisContainer');
+  const setaEsq = document.getElementById('setaEsq');
+  const setaDir = document.getElementById('setaDir');
+  if (!container) return;
+  const rolagem = container.scrollLeft;
+  const maxRolagem = container.scrollWidth - container.clientWidth;
+  setaEsq.classList.toggle('visivel', rolagem > 2);
+  setaDir.classList.toggle('visivel', maxRolagem - rolagem > 2);
+}
+
+function rolarAbas(direcao) {
+  const container = document.getElementById('abasArcoIrisContainer');
+  const passo = 100;
+  container.scrollBy({ left: direcao * passo, behavior: 'smooth' });
+  setTimeout(atualizarSetasAbas, 300);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('abasArcoIrisContainer');
+  if (container) {
+    container.addEventListener('scroll', atualizarSetasAbas);
+    window.addEventListener('resize', atualizarSetasAbas);
+  }
+});
+
+// ============================================================
+// DEMAIS FUNÇÕES (registro, grade, etc.)
+// ============================================================
+function inicializarAnos() {
+  const sel = document.getElementById('seletorAno');
+  sel.innerHTML = '';
+  for (let a = anoAtual; a >= anoAtual - 3; a--) {
+    const opt = document.createElement('option');
+    opt.value = a; opt.innerText = a;
+    sel.appendChild(opt);
+  }
+  sel.value = anoAtual;
+}
+
+function mudarAno(ano) {
+  anoAtual = parseInt(ano);
+  reconstruirCalendario();
+  renderizarDisciplinasDoDia();
+  focarScrollNoDiaAtual();
+}
+
+function reconstruirCalendario() {
+  document.getElementById('caixa-ano').innerText = anoAtual;
+  const jan1 = new Date(anoAtual, 0, 1);
+  const diaSemanaInicioAno = jan1.getDay();
+  const anoBissexto = ((anoAtual % 4 === 0) && (anoAtual % 100 !== 0)) || (anoAtual % 400 === 0);
+  const diasAno = anoBissexto ? 366 : 365;
+  const dif = hojeReal - jan1;
+  const diaAnoAtualBase = Math.floor(dif / 86400000) + 1;
+  const semanaAtual = Math.ceil((diaAnoAtualBase + diaSemanaInicioAno) / 7);
+
+  document.querySelectorAll('.caixa-dias-semana > div').forEach(d => d.classList.remove('dia-semana-marcado'));
+  if (anoAtual === hojeReal.getFullYear()) {
+    const labelDia = document.getElementById(`lbl-d-${hojeReal.getDay()}`);
+    if (labelDia) labelDia.classList.add('dia-semana-marcado');
+  }
+
+  const elSemanas = document.getElementById('caixa-semanas-ano');
+  elSemanas.innerHTML = '';
+  for (let i = 1; i <= 53; i++) {
+    const div = document.createElement('div');
+    div.innerText = i;
+    if (anoAtual === hojeReal.getFullYear() && i === semanaAtual) div.classList.add('semana-atual-marcada');
+    elSemanas.appendChild(div);
+  }
+
+  const elDiario = document.getElementById('diario');
+  elDiario.innerHTML = '';
+  const diasAnoAjustado = diaSemanaInicioAno + diasAno;
+  const sobraUltima = 7 - (diasAnoAjustado % 7);
+  const totalCelulas = diasAnoAjustado + (sobraUltima < 7 ? sobraUltima : 0);
+  const indiceDiaAtualReal = diaAnoAtualBase + diaSemanaInicioAno - 1;
+
+  for (let i = 0; i < totalCelulas; i++) {
+    const celula = document.createElement('div');
+    celula.classList.add('celula-dia');
+    if (i < diaSemanaInicioAno || i >= diasAnoAjustado) {
+      celula.classList.add('morto');
+    } else {
+      const numDiaDoAno = i - diaSemanaInicioAno + 1;
+      const chaveDia = `${anoAtual}-${numDiaDoAno}`;
+      if (anoAtual < hojeReal.getFullYear()) {
+        celula.classList.add('percorrido');
+      } else if (anoAtual === hojeReal.getFullYear()) {
+        if (i === indiceDiaAtualReal) celula.classList.add('marca-dia-atual');
+        else if (i < indiceDiaAtualReal) celula.classList.add('percorrido');
+      }
+      const listaConcluidos = dados.historicoConclusoes[chaveDia] || [];
+      const diaDaSemanaDoDia = new Date(anoAtual, 0, numDiaDoAno).getDay();
+      const totalAgendado = (dados.gradeAgenda[diaDaSemanaDoDia] || []).filter(id => id !== '').length;
+      if (totalAgendado > 0 && listaConcluidos.length > 0) {
+        const porcentagem = (listaConcluidos.length / totalAgendado) * 100;
+        if (porcentagem >= 100) { celula.classList.add('p-100'); celula.innerText = '⭐'; }
+        else if (porcentagem >= 75) celula.classList.add('p-75');
+        else if (porcentagem >= 50) celula.classList.add('p-50');
+        else if (porcentagem > 0) celula.classList.add('p-25');
+      }
+    }
+    elDiario.appendChild(celula);
+  }
+}
+
+function focarScrollNoDiaAtual() {
+  const wrapper = document.getElementById('calendarioScroll');
+  setTimeout(() => {
+    const celulaAtual = document.querySelector('.celula-dia.marca-dia-atual');
+    if (celulaAtual) {
+      const posX = celulaAtual.offsetLeft;
+      wrapper.scrollLeft = posX - wrapper.clientWidth + celulaAtual.clientWidth + 15;
+    } else wrapper.scrollLeft = wrapper.scrollWidth;
+  }, 200);
+}
+
+function renderizarDisciplinasDoDia() {
+  const container = document.getElementById('listaDisciplinas');
+  container.innerHTML = '';
+  const diaSemanaHoje = hojeReal.getDay();
+  const rotinaHoje = dados.gradeAgenda[diaSemanaHoje] || [];
+  const idsAgendados = rotinaHoje.filter(id => id !== '');
+  if (idsAgendados.length === 0 || anoAtual !== hojeReal.getFullYear()) {
+    container.innerHTML = `<p style="font-size:0.75rem;color:var(--texto-secundario);font-style:italic;">Nenhuma ficha agendada para hoje.</p>`;
+    return;
+  }
+  const jan1 = new Date(hojeReal.getFullYear(), 0, 1);
+  const numDiaHoje = Math.floor((hojeReal - jan1) / 86400000) + 1;
+  const chaveHoje = `${hojeReal.getFullYear()}-${numDiaHoje}`;
+  rotinaHoje.forEach((idDisc, indexEstudo) => {
+    if (!idDisc) return;
+    const disc = dados.disciplinas.find(d => d.id === idDisc);
+    if (!disc) return;
+    const concluidosHoje = dados.historicoConclusoes[chaveHoje] || [];
+    const jaFeito = concluidosHoje.includes(indexEstudo);
+    const iconGrupo = dicionarioIcones[disc.grupo] || dicionarioIcones['geral'];
+    const card = document.createElement('div');
+    card.classList.add('card-disciplina');
+    card.innerHTML = `
+      <div class="info-disciplina">
+        <h3>${iconGrupo} ${disc.nome}</h3>
+        <p>Estudo ${indexEstudo + 1}</p>
+      </div>
+      <button class="btn-joinha ${jaFeito ? 'checked' : ''}" onclick="alternarEstudoTurno('${chaveHoje}', ${indexEstudo})">
+        <i class="fa-solid fa-thumbs-up"></i>
+      </button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function alternarEstudoTurno(chaveHoje, indexEstudo) {
+  if (!dados.historicoConclusoes[chaveHoje]) dados.historicoConclusoes[chaveHoje] = [];
+  let lista = dados.historicoConclusoes[chaveHoje];
+  if (lista.includes(indexEstudo)) {
+    dados.historicoConclusoes[chaveHoje] = lista.filter(i => i !== indexEstudo);
+  } else {
+    lista.push(indexEstudo);
+  }
+  salvar();
+  renderizarDisciplinasDoDia();
+  reconstruirCalendario();
+  atualizarProdutividade();
+}
+
+function renderizarAgenda() {
+  const pagina = document.getElementById('agendaPagina');
+  pagina.innerHTML = '';
+  diasSemanaNomes.forEach((diaNome, indexDia) => {
+    const bloco = document.createElement('div');
+    bloco.classList.add('agenda-dia-bloco');
+    let html = `
+      <div class="agenda-dia-titulo">
+        <div>${diaNome}</div>
+        ${modoEdicaoGrade ? `<button class="btn-sub-action add" onclick="adicionarTurno(${indexDia})"><i class="fa-solid fa-plus"></i> Estudo</button>` : ''}
+      </div>
+      <div class="agenda-horarios-container">
+    `;
+    const turnos = dados.gradeAgenda[indexDia] || [''];
+    turnos.forEach((idSelecionado, indexTurno) => {
+      const disc = dados.disciplinas.find(d => d.id === idSelecionado);
+      const iconGrupo = disc ? (dicionarioIcones[disc.grupo] || '') : '';
+      html += `<div class="agenda-linha-horario"><div class="agenda-hora-label">Estudo ${indexTurno + 1}</div>`;
+      if (modoEdicaoGrade) {
+        let opcoes = `<option value="">-- Vago --</option>`;
+        dados.disciplinas.forEach(d => {
+          opcoes += `<option value="${d.id}" ${d.id === idSelecionado ? 'selected' : ''}>${d.nome}</option>`;
+        });
+        html += `
+          <select class="seletor-disciplina" onchange="vincularAgenda(${indexDia}, ${indexTurno}, this.value)">${opcoes}</select>
+          <button class="btn-sub-action" onclick="removerTurno(${indexDia}, ${indexTurno})"><i class="fa-solid fa-trash"></i></button>
+        `;
+      } else {
+        html += `<div class="agenda-disciplina-valor ${!disc ? 'vazio' : ''}">${disc ? iconGrupo + ' ' + disc.nome : 'Vago'}</div>`;
+      }
+      html += `</div>`;
+    });
+    html += `</div>`;
+    bloco.innerHTML = html;
+    pagina.appendChild(bloco);
+  });
+}
+
+function adicionarTurno(dia) { dados.gradeAgenda[dia].push(''); salvar(); renderizarAgenda(); }
+function removerTurno(dia, turno) { dados.gradeAgenda[dia].splice(turno, 1); salvar(); renderizarAgenda(); }
+function vincularAgenda(dia, turno, valor) { dados.gradeAgenda[dia][turno] = valor; salvar(); }
+
+function alternarModoEdicao() {
+  modoEdicaoGrade = !modoEdicaoGrade;
+  document.getElementById('btnEditarGrade').innerText = modoEdicaoGrade ? 'Concluir' : 'Editar Agenda';
+  document.getElementById('status-modo').innerText = modoEdicaoGrade ? 'Modo: Configuração Ativa' : 'Modo: Leitura';
+  renderizarAgenda();
+  if (!modoEdicaoGrade) renderizarDisciplinasDoDia();
+}
+
+// ============================================================
+// MODAL DE CADASTRO E TEMA
+// ============================================================
+function cadastrarDisciplina() {
+  const input = document.getElementById('inputNovaDisc');
+  const grupo = document.getElementById('selectGrupo').value;
+  const nome = input.value.trim();
+  if (!nome) return;
+  dados.disciplinas.push({ id: 'd_' + Date.now(), nome, grupo });
+  input.value = '';
+  salvar(); renderizarAgenda(); fecharModal();
+}
+
+function abrirModal() {
+  document.getElementById('winModal').style.display = 'block';
+  const box = document.getElementById('windowBox');
+  box.style.top = Math.max(0, (window.innerHeight - box.clientHeight) / 2) + 'px';
+  box.style.left = Math.max(0, (window.innerWidth - box.clientWidth) / 2) + 'px';
+}
+function fecharModal() { document.getElementById('winModal').style.display = 'none'; }
+function fecharModalFora(e) { if (e.target.id === 'winModal') fecharModal(); }
+
+function mudarTema(t) {
+  document.body.className = t === 'light' ? 'tema-claro' : 'tema-escuro';
+  document.documentElement.setAttribute('data-theme', t);
+  renderizarAbasArcoIris();
+}
+
+function alternarAba(idx) {
+  document.querySelectorAll('.aba').forEach((a, i) => a.classList.toggle('ativa', i === idx));
+  document.querySelectorAll('.conteudo-fichario > .painel').forEach((p, i) => p.classList.toggle('ativo', i === idx));
+  if (idx === 2) {
+    atualizarProdutividade();
+    if (combinacaoAtual) {
+      document.getElementById('combinacaoNome').innerText = `Cenário: ${combinacaoAtual.nome}`;
+      if (!cronoRodando) {
+        const progresso = 1 - (cronoRestante / cronoTotal);
+        atualizarFundoCrono(progresso);
+      }
+    }
+  }
+}
+
+// ============================================================
+// DRAG MODAL
+// ============================================================
+function fazerModalArrastavel() {
+  const box = document.getElementById('windowBox');
+  const header = document.getElementById('windowHeader');
+  let p1=0,p2=0,p3=0,p4=0;
+  header.onmousedown = iniciarDrag;
+  header.addEventListener('touchstart', iniciarDrag, { passive: false });
+
+  function iniciarDrag(e) {
+    e.preventDefault();
+    const cX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    const cY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+    p3 = cX; p4 = cY;
+    document.onmouseup = pararDrag;
+    document.onmousemove = moverDrag;
+    document.addEventListener('touchend', pararDrag);
+    document.addEventListener('touchmove', moverDrag, { passive: false });
+  }
+  function moverDrag(e) {
+    const cX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    const cY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+    p1 = p3 - cX; p2 = p4 - cY;
+    p3 = cX; p4 = cY;
+    let nTop = box.offsetTop - p2;
+    let nLeft = box.offsetLeft - p1;
+    if (nTop < 0) nTop = 0;
+    if (nLeft < 0) nLeft = 0;
+    if (nTop + box.clientHeight > window.innerHeight) nTop = window.innerHeight - box.clientHeight;
+    if (nLeft + box.clientWidth > window.innerWidth) nLeft = window.innerWidth - box.clientWidth;
+    box.style.top = nTop + 'px'; box.style.left = nLeft + 'px';
+  }
+  function pararDrag() {
+    document.onmouseup = null; document.onmousemove = null;
+    document.removeEventListener('touchend', pararDrag);
+    document.removeEventListener('touchmove', moverDrag);
+  }
+}
+
+const dicionarioIcones = {
+  humanas: '<i class="fa-solid fa-book-open" style="color:#e6a15c;"></i>',
+  exatas: '<i class="fa-solid fa-calculator" style="color:#5ca1e6;"></i>',
+  natureza: '<i class="fa-solid fa-leaf" style="color:#5ce685;"></i>',
+  ti: '<i class="fa-solid fa-code" style="color:#a15ce6;"></i>',
+  artes: '<i class="fa-solid fa-palette" style="color:#e65c9d;"></i>',
+  geral: '<i class="fa-solid fa-graduation-cap" style="color:#64748b;"></i>'
+};
+</script>
 </body>
 </html>
